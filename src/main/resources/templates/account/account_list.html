@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('회원관리 : 리스트 조회 : Buza Admin')"></head>
+<body class="with-welcome-text">
+<div class="container-scroller">
+
+
+    <div th:replace="_pro_banner::pro_banner"></div>
+    <div th:replace="_top_nav::top_nav"></div>
+
+    <!-- container start -->
+    <div class="container-fluid page-body-wrapper">
+        <div th:replace="_left_nav::left_nav"></div>
+        <!-- main-panel start -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Text colors</h4>
+                            <p>a</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div th:replace="_footer_content::footer_content"></div>
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- // container start ends -->
+</div>
+<div th:replace="_footer_script::footer_script"></div>
+</body>
+</html>

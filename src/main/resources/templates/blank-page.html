@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('Buza Admin')"></head>
+<body class="with-welcome-text">
+<div class="container-scroller">
+    <div th:replace="_pro_banner::pro_banner"></div>
+    <div th:replace="_top_nav::top_nav"></div>
+    <div class="container-fluid page-body-wrapper">
+        <div th:replace="_left_nav::left_nav"></div>
+        <!-- main-panel start -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+            </div>
+            <div th:replace="_footer_content::footer_content"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="_footer_script::footer_script"></div>
+</body>
+</html>

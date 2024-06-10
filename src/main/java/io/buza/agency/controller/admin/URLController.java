@@ -21,4 +21,11 @@ public class URLController {
         return "index";
     }
 
+    @GetMapping("/account")
+    public String account_list() {
+        return "account/account_list";
+    }
+
+
+
 }
