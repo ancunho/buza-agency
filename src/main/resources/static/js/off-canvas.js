@@ -2,7 +2,7 @@
   'use strict';
   $(function() {
     $('[data-bs-toggle="offcanvas"]').on("click", function() {
-      $('.sidebar-offcanvas').toggleClass('active')
+      // $('.sidebar-offcanvas').toggleClass('active')
     });
   });
 })(jQuery);
