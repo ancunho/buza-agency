@@ -28,7 +28,12 @@ public class URLController {
 
     @GetMapping("/account")
     public String account_list() {
-        return "account/account_list";
+        return "account/list";
+    }
+
+    @GetMapping("/account/create_new")
+    public String account_create_new() {
+        return "account/create_new";
     }
 
 
