@@ -16,11 +16,6 @@
 
       var elementHref = element.attr('href');
       var pathname = location.pathname;
-      console.log("_____________________________");
-      console.log("href:" + element.attr('href'));
-      console.log("pathName:" + location.pathname);
-      console.log(elementHref.localeCompare(pathname) === 0 ? "true" : "false");
-      console.log("_____________________________");
 
       if (elementHref.localeCompare(pathname) === 0) {
         element.parents('.nav-item').last().addClass('active');

@@ -2,6 +2,10 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('Buza Admin')"></head>
 <body class="with-welcome-text">
+<style>
+    .account_form .form-group { margin-top:1.2rem; margin-bottom:1.2rem;}
+    .account_form .form-group label.control-label span { padding-left:5px; font-size:9px; }
+</style>
 <div class="container-scroller">
     <div th:replace="_pro_banner::pro_banner"></div>
     <div th:replace="_top_nav::top_nav"></div>
@@ -10,36 +14,63 @@
         <!-- main-panel start -->
         <div class="main-panel" id="app">
             <div class="content-wrapper">
-                <div class="card">
+                <div class="card account_form">
                     <div class="card-body">
-                        <h4 class="card-title">Material Form</h4>
-                        <p class="card-description"> default layout </p>
+                        <h4 class="card-title">신규회원 등록</h4>
+                        <p class="card-description">등록하려는 회원정보를 입력해주세요.</p>
                         <form class="forms-sample material-form">
                             <div class="form-group">
-                                <input type="text" required="required" />
-                                <label class="control-label">Username</label><i class="bar"></i>
+                                <div class="form-check mt-0 mb-0 me-5 d-inline-block">
+                                    <label class="form-check-label d-inline-block">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               name="membershipRadios"
+                                               id="membershipRadios1"
+                                               v-model="account.status"
+                                               value="1" checked> 정상사용 </label>
+                                </div>
+                                <div class="form-check mt-0 mb-0 d-inline-block">
+                                    <label class="form-check-label d-inline-block">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               name="membershipRadios"
+                                               id="membershipRadios2"
+                                               v-model="account.status"
+                                               value="0"> 사용중지 </label>
+                                </div>
+<!--                                <div class="col-sm-2">-->
+<!--                                    <div class="form-check mt-0 mb-0">-->
+<!--                                        <label class="form-check-label">-->
+<!--                                            <input type="radio"-->
+<!--                                                   class="form-check-input"-->
+<!--                                                   name="membershipRadios"-->
+<!--                                                   id="membershipRadios2"-->
+<!--                                                   value="option2"> 사용중지 </label>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                             <div class="form-group">
-                                <input type="text" required="required" />
+                                <input type="text" required="required" v-model="account.realName" />
+                                <label class="control-label">이름<span>(Real name)</span></label><i class="bar"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" required="required" v-model="account.accountUsername" />
+                                <label class="control-label">ID<span>(로그인아이디)</span></label><i class="bar"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" required="required" v-model="account.accountPassword" />
+                                <label class="control-label">비밀번호</label><i class="bar"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" required="required"  v-model="account.accountPasswordCheck" />
+                                <label class="control-label">비밀번호 확인</label><i class="bar"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" required="required"  v-model="account.email" />
                                 <label class="control-label">Email address</label><i class="bar"></i>
                             </div>
-                            <div class="form-group">
-                                <input type="text" required="required" />
-                                <label class="control-label">Password</label><i class="bar"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" required="required" />
-                                <label class="control-label">Confirm Password</label><i class="bar"></i>
-                            </div>
-                            <div class="form-group">
-                                <textarea required="required"></textarea>
-                                <label class="control-label">Message</label><i class="bar"></i>
-                            </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox" checked="checked" /><i class="helper"></i>Remember me </label>
-                            </div>
                             <div class="button-container">
-                                <button @click="sayHi" type="button" class="button btn btn-primary" id="btnSumit"><span>Submit</span></button>
+                                <button @click="save" type="button" class="button btn btn-primary" id="btnSumit"><span>Submit</span></button>
                             </div>
                         </form>
                     </div>
@@ -51,29 +82,55 @@
 </div>
 <div th:replace="_footer_script::footer_script"></div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#btnSumit").click(function(){
-            alert(111);
-        });
-    });
-</script>
 <script>
     const { createApp } = Vue;
     createApp({
         data() {
             return {
-                count: 0,
-                name: "cunho hahaha ",
                 account: {
-
+                    realName: '',
+                    accountUsername: '',
+                    accountPassword: '',
+                    accountPasswordCheck: '',
+                    email: '',
+                    status: '',
                 }
             }
         },
         methods: {
-            sayHi() {
-                let _this = this;
-                alert(_this.name);
+            checkAccountForm() {
+                var _this = this;
+                if (_this.account.realName === ""
+                    || _this.account.accountUsername === ""
+                    || _this.account.accountPassword === ""
+                    || _this.account.accountPasswordCheck === ""
+                    || _this.account.email === ""
+                    || _this.account.status === ""
+                ) {
+                    alert("필수입력항목입니다.");
+                    return;
+                }
+                if (_this.account.accountPassword !== _this.account.accountPasswordCheck) {
+                    alert("입력하신 비밀번호가 다릅니다. 다시 확인해주세요.");
+                    return;
+                }
+                return true;
+            },
+            save() {
+                var _this = this;
+                console.log(_this.account);
+                var result = _this.checkAccountForm();
+                if (result) {
+                    console.log(1111);
+                    axios.post("/api/admin/account", _this.account)
+                        .then(res => {
+                            console.log(res);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+
+                }
             }
         }
     }).mount("#app");
