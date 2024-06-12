@@ -10,7 +10,31 @@
     //Add active class to nav-link based on url dynamically
     //Active class can be hard coded directly in html file also as required
 
+    var current = location.pathname;
+
+
     function addActiveClass(element) {
+
+      var elementHref = element.attr('href');
+      var pathname = location.pathname;
+      console.log("_____________________________");
+      console.log("href:" + element.attr('href'));
+      console.log("pathName:" + location.pathname);
+      console.log(elementHref.localeCompare(pathname) === 0 ? "true" : "false");
+      console.log("_____________________________");
+
+      if (elementHref.localeCompare(pathname) === 0) {
+        element.parents('.nav-item').last().addClass('active');
+        if (element.parents('.sub-menu').length) {
+          element.closest('.collapse').addClass('show');
+          element.addClass('active');
+        }
+        if (element.parents('.submenu-item').length) {
+          element.addClass('active');
+        }
+      }
+
+
 
       // console.log(current);
       // if (current === "") {
@@ -35,10 +59,11 @@
       //     }
       //   }
       // }
+
     }
 
     // var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
-    var current = location.pathname;
+
     $('.nav li a', sidebar).each(function () {
       var $this = $(this);
       addActiveClass($this);
