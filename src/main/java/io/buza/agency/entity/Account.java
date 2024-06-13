@@ -1,13 +1,12 @@
-package io.buza.agency.domain;
+package io.buza.agency.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Objects;
 
 @Getter
+@NoArgsConstructor
 @ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "accountUsername", unique = true),
@@ -40,7 +39,21 @@ public class Account extends BaseEntity {
     @Setter @Column private String avatar;
     @Setter @Column private String country;
 
-    protected Account() {
+    @Builder
+    public Account(Long accountSeq, String accountUsername, String accountPassword, String accountRole, String status, String realName, String birthday, String gender, String accountType, String accountLevel, String nickname, String avatar, String country) {
+        this.accountSeq = accountSeq;
+        this.accountUsername = accountUsername;
+        this.accountPassword = accountPassword;
+        this.accountRole = accountRole;
+        this.status = status;
+        this.realName = realName;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.accountType = accountType;
+        this.accountLevel = accountLevel;
+        this.nickname = nickname;
+        this.avatar = avatar;
+        this.country = country;
     }
 
     @Override

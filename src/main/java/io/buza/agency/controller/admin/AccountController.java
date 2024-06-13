@@ -1,6 +1,9 @@
 package io.buza.agency.controller.admin;
 
 import io.buza.agency.dto.AccountDto;
+import io.buza.agency.dto.response.AccountResponseDto;
+import io.buza.agency.entity.Account;
+import io.buza.agency.serivce.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,10 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class AccountController {
 
+    private final AccountService accountService;
+
     @PostMapping("/account")
-    public ResponseEntity<AccountDto> account_create_new(@RequestBody AccountDto accountDto) {
+    public ResponseEntity<AccountResponseDto> account_create_new(@RequestBody AccountDto accountDto) {
         log.info("======> {}", accountDto.toString());
-        return ResponseEntity.status(HttpStatus.CREATED).body(accountDto);
+        AccountResponseDto saveAccount = accountService.saveAccount(accountDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveAccount);
     }
 
  }
