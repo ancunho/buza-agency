@@ -17,6 +17,10 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
 
+    public boolean existsByAccountUsername(String accountUsername) {
+        return accountRepository.existsByAccountUsername(accountUsername);
+    }
+
     public AccountResponseDto saveAccount(AccountDto accountDto) {
         Account saveAccount = accountRepository.save(AccountDto.toEntity(accountDto));
         return AccountResponseDto.fromEntity(saveAccount);

@@ -12,7 +12,7 @@ import java.util.Objects;
         @Index(columnList = "accountUsername", unique = true),
         @Index(columnList = "createdAt")
 })
-@Entity
+@Entity(name = "tb_account")
 public class Account extends BaseEntity {
 
     @Id

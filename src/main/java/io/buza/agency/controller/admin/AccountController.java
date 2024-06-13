@@ -2,6 +2,8 @@ package io.buza.agency.controller.admin;
 
 import io.buza.agency.dto.AccountDto;
 import io.buza.agency.dto.response.AccountResponseDto;
+import io.buza.agency.dto.response.BaseResponse;
+import io.buza.agency.dto.response.ResponseCode;
 import io.buza.agency.entity.Account;
 import io.buza.agency.serivce.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +24,15 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/account")
-    public ResponseEntity<AccountResponseDto> account_create_new(@RequestBody AccountDto accountDto) {
+    public BaseResponse account_create_new(@RequestBody AccountDto accountDto) {
         log.info("======> {}", accountDto.toString());
-        AccountResponseDto saveAccount = accountService.saveAccount(accountDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saveAccount);
+        boolean checkAccountByAccountUsername = accountService.existsByAccountUsername(accountDto.getAccountUsername());
+
+        if (checkAccountByAccountUsername) {
+            return BaseResponse.valueOfFailureCodeMessage(ResponseCode.SAVE_ERROR.getCode(), "Username repeat error.");
+        }
+        AccountResponseDto accountResponseDto = accountService.saveAccount(accountDto);
+        return BaseResponse.valueOfSuccess(accountResponseDto);
     }
 
  }
