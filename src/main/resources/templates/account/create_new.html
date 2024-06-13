@@ -3,8 +3,8 @@
 <head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('Buza Admin')"></head>
 <body class="with-welcome-text">
 <style>
-    .account_form .form-group { margin-top:1.2rem; margin-bottom:1.2rem;}
-    .account_form .form-group label.control-label span { padding-left:5px; font-size:9px; }
+    .account_form .form-group { margin-top:1.5rem; margin-bottom:1.5rem;}
+    .account_form .form-group label.control-label span { padding-left:5px; font-size:10px; }
 </style>
 <div class="container-scroller">
     <div th:replace="_pro_banner::pro_banner"></div>
@@ -18,57 +18,88 @@
                     <div class="card-body">
                         <h4 class="card-title">신규회원 등록</h4>
                         <p class="card-description">등록하려는 회원정보를 입력해주세요.</p>
-                        <form class="forms-sample material-form">
-                            <div class="form-group">
-                                <div class="form-check mt-0 mb-0 me-5 d-inline-block">
-                                    <label class="form-check-label d-inline-block">
-                                        <input type="radio"
-                                               class="form-check-input"
-                                               name="membershipRadios"
-                                               id="membershipRadios1"
-                                               v-model="account.status"
-                                               value="1" checked> 정상사용 </label>
+                        <form class="forms-sample">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="form-check mt-0 mb-0 me-5 d-inline-block">
+                                            <label class="form-check-label d-inline-block" style="cursor: pointer">
+                                                <input type="radio"
+                                                       class="form-check-input"
+                                                       name="membershipRadios"
+                                                       id="membershipRadios1"
+                                                       v-model="account.status"
+                                                       value="1" checked> 정상사용 </label>
+                                        </div>
+                                        <div class="form-check mt-0 mb-0 d-inline-block">
+                                            <label class="form-check-label d-inline-block" style="cursor: pointer">
+                                                <input type="radio"
+                                                       class="form-check-input"
+                                                       name="membershipRadios"
+                                                       id="membershipRadios2"
+                                                       v-model="account.status"
+                                                       value="0"> 사용중지 </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">이름</label><i class="bar"></i>
+                                        <input type="text"  v-model="account.realName" placeholder="이름을 입력해주세요." class="form-control form-control-sm" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">ID</label><i class="bar"></i>
+                                        <input type="text" v-model="account.accountUsername" placeholder="영문,숫자 조합으로 16자이내" class="form-control form-control-sm" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">비밀번호</label><i class="bar"></i>
+                                        <input type="password" v-model="account.accountPassword" placeholder="영문,숫자,특수기호 조합으로 20자이내" class="form-control form-control-sm" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">비밀번호 확인</label><i class="bar"></i>
+                                        <input type="password" v-model="account.accountPasswordCheck" placeholder="영문,숫자,특수기호 조합으로 20자이내" class="form-control form-control-sm" required="required"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Email address</label><i class="bar"></i>
+                                        <input type="email" v-model="account.email" placeholder="올바른 이메일형식으로 입력해주세요." class="form-control form-control-sm" required="required" />
+                                    </div>
                                 </div>
-                                <div class="form-check mt-0 mb-0 d-inline-block">
-                                    <label class="form-check-label d-inline-block">
-                                        <input type="radio"
-                                               class="form-check-input"
-                                               name="membershipRadios"
-                                               id="membershipRadios2"
-                                               v-model="account.status"
-                                               value="0"> 사용중지 </label>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="form-check mt-0 mb-0 me-5 d-inline-block">
+                                            <label class="form-check-label d-inline-block" style="cursor: pointer">
+                                                <input type="radio"
+                                                       class="form-check-input"
+                                                       name="radioGender"
+                                                       v-model="account.gender"
+                                                       value="1" checked> 남 </label>
+                                        </div>
+                                        <div class="form-check mt-0 mb-0 me-5 d-inline-block">
+                                            <label class="form-check-label d-inline-block" style="cursor: pointer">
+                                                <input type="radio"
+                                                       class="form-check-input"
+                                                       name="radioGender"
+                                                       v-model="account.gender"
+                                                       value="2"> 여 </label>
+                                        </div>
+                                        <div class="form-check mt-0 mb-0 d-inline-block">
+                                            <label class="form-check-label d-inline-block" style="cursor: pointer">
+                                                <input type="radio"
+                                                       class="form-check-input"
+                                                       name="radioGender"
+                                                       v-model="account.gender"
+                                                       value="0"> 알수없음 </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">닉네임</label><i class="bar"></i>
+                                        <input type="text" v-model="account.nickname" placeholder="영문,숫자 조합으로 10자이내" class="form-control form-control-sm" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">생년월일</label><i class="bar"></i>
+                                        <input type="text" v-model="account.birthday" placeholder="'-'없이 8자리 숫자만 입력해주세요.(년월일:yyyyMMdd)" class="form-control form-control-sm" />
+                                    </div>
                                 </div>
-<!--                                <div class="col-sm-2">-->
-<!--                                    <div class="form-check mt-0 mb-0">-->
-<!--                                        <label class="form-check-label">-->
-<!--                                            <input type="radio"-->
-<!--                                                   class="form-check-input"-->
-<!--                                                   name="membershipRadios"-->
-<!--                                                   id="membershipRadios2"-->
-<!--                                                   value="option2"> 사용중지 </label>-->
-<!--                                    </div>-->
-<!--                                </div>-->
                             </div>
-                            <div class="form-group">
-                                <input type="text" required="required" v-model="account.realName" />
-                                <label class="control-label">이름<span>(Real name)</span></label><i class="bar"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" required="required" v-model="account.accountUsername" />
-                                <label class="control-label">ID<span>(로그인아이디)</span></label><i class="bar"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" required="required" v-model="account.accountPassword" />
-                                <label class="control-label">비밀번호</label><i class="bar"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" required="required"  v-model="account.accountPasswordCheck" />
-                                <label class="control-label">비밀번호 확인</label><i class="bar"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" required="required"  v-model="account.email" />
-                                <label class="control-label">Email address</label><i class="bar"></i>
-                            </div>
+
                             <div class="button-container">
                                 <button @click="save" type="button" class="button btn btn-primary" id="btnSumit"><span>Submit</span></button>
                             </div>
@@ -94,6 +125,13 @@
                     accountPasswordCheck: '',
                     email: '',
                     status: '',
+                    birthday:'',
+                    gender:'',
+                    accountType:'',
+                    accountLevel:'',
+                    nickname:'',
+                    avatar:'',
+                    country:''
                 }
             }
         },
@@ -108,20 +146,17 @@
                     || _this.account.status === ""
                 ) {
                     alert("필수입력항목입니다.");
-                    return;
+                    return false;
                 }
                 if (_this.account.accountPassword !== _this.account.accountPasswordCheck) {
                     alert("입력하신 비밀번호가 다릅니다. 다시 확인해주세요.");
-                    return;
+                    return false;
                 }
                 return true;
             },
             save() {
-                var _this = this;
-                console.log(_this.account);
-                var result = _this.checkAccountForm();
-                if (result) {
-                    console.log(1111);
+                let _this = this;
+                if (_this.checkAccountForm()) {
                     axios.post("/api/admin/account", _this.account)
                         .then(res => {
                             console.log(res);

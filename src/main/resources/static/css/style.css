@@ -117,7 +117,7 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -8437,7 +8437,7 @@
   --bs-dark-border-subtle: #adb5bd;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -21049,7 +21049,7 @@ input:focus {
 /* Typography */
 body {
   font-size: 1rem;
-  font-family: "Manrope", sans-serif;
+  font-family: sans-serif;
   font-weight: initial;
   line-height: normal;
   -webkit-font-smoothing: antialiased;
@@ -21324,7 +21324,7 @@ pre {
 code {
   padding: 5px;
   color: #F95F53;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   font-weight: 300;
   font-size: 0.812rem;
   border-radius: 4px;
@@ -21452,7 +21452,7 @@ code {
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   font-size: calc(0.812rem - 0.05rem);
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   font-weight: 400;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -27029,7 +27029,7 @@ dl li {
   padding-left: 0;
   position: relative;
   margin-bottom: 0;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
 }
 .icon-data-list li {
   margin-bottom: 1rem;
@@ -27107,7 +27107,6 @@ dl li {
   color: #222222;
 }
 .table.select-table td {
-  font-family: Manrope;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -27407,10 +27406,10 @@ dl li {
 }
 
 .home-tab {
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
 }
 .home-tab .nav-tabs {
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   border-bottom: none;
 }
 .rtl .home-tab .nav-tabs {
@@ -27428,7 +27427,7 @@ dl li {
   padding: 12px 14px;
   border: none;
   border-right: 1px solid #dee2e6;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   background: transparent;
 }
 @media (max-width: 991px) {
@@ -27447,7 +27446,7 @@ dl li {
 }
 .home-tab .tab-content {
   padding: 24px 0;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   border: none;
 }
 
@@ -28013,7 +28012,7 @@ dl li {
 }
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed thead tr th.dow,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed thead tr th.dow {
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   color: #1F1F1F;
   font-size: 0.875rem;
   font-weight: initial;
@@ -28467,7 +28466,7 @@ dl li {
 .sidebar {
   min-height: calc(100vh - 97px);
   background: #F4F5F7;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   font-weight: 500;
   padding: 0;
   width: 220px;
@@ -29156,7 +29155,7 @@ dl li {
   display: none;
 }
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item .welcome-text {
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 28px;
@@ -29172,7 +29171,7 @@ dl li {
   display: block;
 }
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item .welcome-sub-text {
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -29192,7 +29191,7 @@ dl li {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   min-width: 170px;
   height: 34px;
   background: #ffffff;
@@ -29206,7 +29205,7 @@ dl li {
 }
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item .navbar-date-picker {
   background: #ffffff;
-  font-family: "Manrope", sans-serif;
+  font-family:  sans-serif;
   height: 36px;
   border: 1px solid #DFDFDF;
   border-radius: 6px;
