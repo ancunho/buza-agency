@@ -7,7 +7,12 @@ import io.buza.agency.repository.AccountRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.function.Function;
+
 
 @Slf4j
 @Service
@@ -25,6 +30,14 @@ public class AccountService {
         Account saveAccount = accountRepository.save(AccountDto.toEntity(accountDto));
         return AccountResponseDto.fromEntity(saveAccount);
     }
+
+    public Page<AccountDto> getAccountAll(Pageable pageable) {
+        return accountRepository.findAll(pageable).map(AccountDto::fromEntity);
+    }
+
+
+
+
 
 
 
