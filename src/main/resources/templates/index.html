@@ -1,745 +1,370 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html class="h-full bg-white" lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('Buza Admin')"></head>
-<body class="with-welcome-text">
-<div class="container-scroller">
-    <div th:replace="_pro_banner::pro_banner"></div>
-    <div th:replace="_top_nav::top_nav"></div>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper pt-0">
-        <div th:replace="_left_nav::left_nav"></div>
-        <!-- main-panel start -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="home-tab">
-                            <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Audiences</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Demographics</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
-                                    </li>
-                                </ul>
-                                <div>
-                                    <div class="btn-wrapper">
-                                        <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
-                                        <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
-                                        <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                                    </div>
-                                </div>
+<body class="h-full">
+
+<div id="buza-container" @click="handleOutsideClick">
+
+    <div th:replace="_left_nav::left_nav"></div>
+
+
+    <div class="lg:pl-72">
+        <div th:replace="_top_nav::top_nav"></div>
+
+        <main class="py-10">
+            <div class="px-4 sm:px-6 lg:px-8">
+                <!-- Your content Start-->
+                <div class="relative isolate overflow-hidden">
+                    <!-- Secondary navigation -->
+                    <header class="sm:pb-6">
+                        <div class="mx-auto flex flex-wrap items-center gap-6 px-4 sm:flex-nowrap sm:px-6 lg:px-8">
+                            <h1 class="text-base font-semibold leading-7 text-gray-900">Cashflow</h1>
+                            <div class="order-last flex w-full gap-x-8 text-sm font-semibold leading-6 sm:order-none sm:w-auto sm:border-l sm:border-gray-200 sm:pl-6 sm:leading-7">
+                                <a href="#" class="text-indigo-600">Last 7 days</a>
+                                <a href="#" class="text-gray-700">Last 30 days</a>
+                                <a href="#" class="text-gray-700">All-time</a>
                             </div>
-                            <div class="tab-content tab-content-basic">
-                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="statistics-details d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <p class="statistics-title">Bounce Rate</p>
-                                                    <h3 class="rate-percentage">32.53%</h3>
-                                                    <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+                            <a href="#" class="ml-auto flex items-center gap-x-1 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                <svg class="-ml-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path d="M10.75 6.75a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" />
+                                </svg>
+                                New invoice
+                            </a>
+                        </div>
+                    </header>
+
+                    <!-- Stats -->
+                    <div class="border-b border-b-gray-900/10 lg:border-t lg:border-t-gray-900/5">
+                        <dl class="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:px-2 xl:px-0">
+                            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:px-6 lg:border-t-0 xl:px-8">
+                                <dt class="text-sm font-medium leading-6 text-gray-500">Revenue</dt>
+                                <dd class="text-xs font-medium text-gray-700">+4.75%</dd>
+                                <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">$405,091.00</dd>
+                            </div>
+                            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:border-l sm:px-6 lg:border-t-0 xl:px-8">
+                                <dt class="text-sm font-medium leading-6 text-gray-500">Overdue invoices</dt>
+                                <dd class="text-xs font-medium text-rose-600">+54.02%</dd>
+                                <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">$12,787.00</dd>
+                            </div>
+                            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:px-6 lg:border-l lg:border-t-0 xl:px-8">
+                                <dt class="text-sm font-medium leading-6 text-gray-500">Outstanding invoices</dt>
+                                <dd class="text-xs font-medium text-gray-700">-1.39%</dd>
+                                <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">$245,988.00</dd>
+                            </div>
+                            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:border-l sm:px-6 lg:border-t-0 xl:px-8">
+                                <dt class="text-sm font-medium leading-6 text-gray-500">Expenses</dt>
+                                <dd class="text-xs font-medium text-rose-600">+10.18%</dd>
+                                <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">$30,156.00</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="absolute left-0 top-full -z-10 mt-96 origin-top-left translate-y-40 -rotate-90 transform-gpu opacity-20 blur-3xl sm:left-1/2 sm:-ml-96 sm:-mt-10 sm:translate-y-0 sm:rotate-0 sm:transform-gpu sm:opacity-50" aria-hidden="true">
+                        <div class="aspect-[1154/678] w-[72.125rem] bg-gradient-to-br from-[#FF80B5] to-[#9089FC]" style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-16 py-16 xl:space-y-20">
+                    <!-- Recent activity table -->
+                    <div>
+                        <div class="mx-auto px-4 sm:px-6 lg:px-8">
+                            <h2 class="mx-auto max-w-2xl text-base font-semibold leading-6 text-gray-900 lg:mx-0 lg:max-w-none">Recent activity</h2>
+                        </div>
+                        <div class="mt-6 overflow-hidden border-t border-gray-100">
+                            <div class="mx-auto px-4 sm:px-6 lg:px-8">
+                                <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+                                    <table class="w-full text-left">
+                                        <thead class="sr-only">
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th class="hidden sm:table-cell">Client</th>
+                                            <th>More details</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="text-sm leading-6 text-gray-900">
+                                            <th scope="colgroup" colspan="3" class="relative isolate py-2 font-semibold">
+                                                <time datetime="2023-03-22">Today</time>
+                                                <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-gray-200 bg-gray-50"></div>
+                                                <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-gray-200 bg-gray-50"></div>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td class="relative py-5 pr-6">
+                                                <div class="flex gap-x-6">
+                                                    <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.75-4.75a.75.75 0 001.5 0V8.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L6.2 9.74a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <div class="flex-auto">
+                                                        <div class="flex items-start gap-x-3">
+                                                            <div class="text-sm font-medium leading-6 text-gray-900">$7,600.00 USD</div>
+                                                            <div class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Paid</div>
+                                                        </div>
+                                                        <div class="mt-1 text-xs leading-5 text-gray-500">$500.00 tax</div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p class="statistics-title">Page Views</p>
-                                                    <h3 class="rate-percentage">7,682</h3>
-                                                    <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+                                                <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
+                                                <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
+                                            </td>
+                                            <td class="hidden py-5 pr-6 sm:table-cell">
+                                                <div class="text-sm leading-6 text-gray-900">Reform</div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Website redesign</div>
+                                            </td>
+                                            <td class="py-5 text-right">
+                                                <div class="flex justify-end">
+                                                    <a href="#" class="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00012, Reform</span></a>
                                                 </div>
-                                                <div>
-                                                    <p class="statistics-title">New Sessions</p>
-                                                    <h3 class="rate-percentage">68.8</h3>
-                                                    <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
-                                                </div>
-                                                <div class="d-none d-md-block">
-                                                    <p class="statistics-title">Avg. Time on Site</p>
-                                                    <h3 class="rate-percentage">2m:35s</h3>
-                                                    <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
-                                                </div>
-                                                <div class="d-none d-md-block">
-                                                    <p class="statistics-title">New Sessions</p>
-                                                    <h3 class="rate-percentage">68.8</h3>
-                                                    <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
-                                                </div>
-                                                <div class="d-none d-md-block">
-                                                    <p class="statistics-title">Avg. Time on Site</p>
-                                                    <h3 class="rate-percentage">2m:35s</h3>
-                                                    <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-8 d-flex flex-column">
-                                            <div class="row flex-grow">
-                                                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="d-sm-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <h4 class="card-title card-title-dash">Performance Line Chart</h4>
-                                                                    <h5 class="card-subtitle card-subtitle-dash">Lorem Ipsum is simply dummy text of the printing</h5>
-                                                                </div>
-                                                                <div id="performanceLine-legend"></div>
-                                                            </div>
-                                                            <div class="chartjs-wrapper mt-4">
-                                                                <canvas id="performanceLine" width=""></canvas>
-                                                            </div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Invoice <span class="text-gray-900">#00012</span></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="relative py-5 pr-6">
+                                                <div class="flex gap-x-6">
+                                                    <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.59L7.3 9.24a.75.75 0 00-1.1 1.02l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <div class="flex-auto">
+                                                        <div class="flex items-start gap-x-3">
+                                                            <div class="text-sm font-medium leading-6 text-gray-900">$10,000.00 USD</div>
+                                                            <div class="rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Withdraw</div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 d-flex flex-column">
-                                            <div class="row flex-grow">
-                                                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded">
-                                                        <div class="card-body pb-0">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">Status Summary</h4>
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <p class="status-summary-ight-white mb-1">Closed Value</p>
-                                                                    <h2 class="text-info">357</h2>
-                                                                </div>
-                                                                <div class="col-sm-8">
-                                                                    <div class="status-summary-chart-wrapper pb-4">
-                                                                        <canvas id="status-summary"></canvas>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
+                                                <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
+                                            </td>
+                                            <td class="hidden py-5 pr-6 sm:table-cell">
+                                                <div class="text-sm leading-6 text-gray-900">Tom Cook</div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Salary</div>
+                                            </td>
+                                            <td class="py-5 text-right">
+                                                <div class="flex justify-end">
+                                                    <a href="#" class="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00011, Tom Cook</span></a>
+                                                </div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Invoice <span class="text-gray-900">#00011</span></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="relative py-5 pr-6">
+                                                <div class="flex gap-x-6">
+                                                    <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <div class="flex-auto">
+                                                        <div class="flex items-start gap-x-3">
+                                                            <div class="text-sm font-medium leading-6 text-gray-900">$2,000.00 USD</div>
+                                                            <div class="rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Overdue</div>
                                                         </div>
+                                                        <div class="mt-1 text-xs leading-5 text-gray-500">$130.00 tax</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-6">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                                                        <div class="circle-progress-width">
-                                                                            <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <p class="text-small mb-2">Total Visitors</p>
-                                                                            <h4 class="mb-0 fw-bold">26.80%</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <div class="circle-progress-width">
-                                                                            <div id="visitperday" class="progressbar-js-circle pr-2"></div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <p class="text-small mb-2">Visits per day</p>
-                                                                            <h4 class="mb-0 fw-bold">9065</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
+                                                <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
+                                            </td>
+                                            <td class="hidden py-5 pr-6 sm:table-cell">
+                                                <div class="text-sm leading-6 text-gray-900">Tuple</div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Logo design</div>
+                                            </td>
+                                            <td class="py-5 text-right">
+                                                <div class="flex justify-end">
+                                                    <a href="#" class="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00009, Tuple</span></a>
+                                                </div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Invoice <span class="text-gray-900">#00009</span></div>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="text-sm leading-6 text-gray-900">
+                                            <th scope="colgroup" colspan="3" class="relative isolate py-2 font-semibold">
+                                                <time datetime="2023-03-21">Yesterday</time>
+                                                <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-gray-200 bg-gray-50"></div>
+                                                <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-gray-200 bg-gray-50"></div>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td class="relative py-5 pr-6">
+                                                <div class="flex gap-x-6">
+                                                    <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.75-4.75a.75.75 0 001.5 0V8.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L6.2 9.74a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <div class="flex-auto">
+                                                        <div class="flex items-start gap-x-3">
+                                                            <div class="text-sm font-medium leading-6 text-gray-900">$14,000.00 USD</div>
+                                                            <div class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Paid</div>
                                                         </div>
+                                                        <div class="mt-1 text-xs leading-5 text-gray-500">$900.00 tax</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-8 d-flex flex-column">
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="d-sm-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <h4 class="card-title card-title-dash">Market Overview</h4>
-                                                                    <p class="card-subtitle card-subtitle-dash">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                                                                </div>
-                                                                <div>
-                                                                    <div class="dropdown">
-                                                                        <button class="btn btn-light dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> This month </button>
-                                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                                            <h6 class="dropdown-header">Settings</h6>
-                                                                            <a class="dropdown-item" href="#">Action</a>
-                                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                                            <div class="dropdown-divider"></div>
-                                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                                                <div class="d-sm-flex align-items-center mt-4 justify-content-between">
-                                                                    <h2 class="me-2 fw-bold">$36,2531.00</h2>
-                                                                    <h4 class="me-2">USD</h4>
-                                                                    <h4 class="text-success">(+1.37%)</h4>
-                                                                </div>
-                                                                <div class="me-3">
-                                                                    <div id="marketingOverview-legend"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="chartjs-bar-wrapper mt-3">
-                                                                <canvas id="marketingOverview"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
+                                                <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
+                                            </td>
+                                            <td class="hidden py-5 pr-6 sm:table-cell">
+                                                <div class="text-sm leading-6 text-gray-900">SavvyCal</div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Website redesign</div>
+                                            </td>
+                                            <td class="py-5 text-right">
+                                                <div class="flex justify-end">
+                                                    <a href="#" class="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00010, SavvyCal</span></a>
                                                 </div>
-                                            </div>
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded table-darkBGImg">
-                                                        <div class="card-body">
-                                                            <div class="col-sm-8">
-                                                                <h3 class="text-white upgrade-info mb-0"> Enhance your <span class="fw-bold">Campaign</span> for better outreach </h3>
-                                                                <a href="#" class="btn btn-info upgrade-btn">Upgrade Account!</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="d-sm-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
-                                                                    <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
-                                                                </div>
-                                                                <div>
-                                                                    <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add new member</button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="table-responsive  mt-1">
-                                                                <table class="table select-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            <div class="form-check form-check-flat mt-0">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox" class="form-check-input" aria-checked="false" id="check-all"><i class="input-helper"></i></label>
-                                                                            </div>
-                                                                        </th>
-                                                                        <th>Customer</th>
-                                                                        <th>Company</th>
-                                                                        <th>Progress</th>
-                                                                        <th>Status</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-check form-check-flat mt-0">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="d-flex ">
-                                                                                <img th:src="@{~/images/faces/face1.jpg}" alt="">
-                                                                                <div>
-                                                                                    <h6>Brandon Washington</h6>
-                                                                                    <p>Head admin</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <h6>Company name 1</h6>
-                                                                            <p>company type</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div>
-                                                                                <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                    <p class="text-success">79%</p>
-                                                                                    <p>85/162</p>
-                                                                                </div>
-                                                                                <div class="progress progress-md">
-                                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="badge badge-opacity-warning">In progress</div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-check form-check-flat mt-0">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="d-flex">
-                                                                                <img th:src="@{~/images/faces/face2.jpg}" alt="">
-                                                                                <div>
-                                                                                    <h6>Laura Brooks</h6>
-                                                                                    <p>Head admin</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <h6>Company name 1</h6>
-                                                                            <p>company type</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div>
-                                                                                <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                    <p class="text-success">65%</p>
-                                                                                    <p>85/162</p>
-                                                                                </div>
-                                                                                <div class="progress progress-md">
-                                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="badge badge-opacity-warning">In progress</div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-check form-check-flat mt-0">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="d-flex">
-                                                                                <img th:src="@{images/faces/face3.jpg}" alt="">
-                                                                                <div>
-                                                                                    <h6>Wayne Murphy</h6>
-                                                                                    <p>Head admin</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <h6>Company name 1</h6>
-                                                                            <p>company type</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div>
-                                                                                <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                    <p class="text-success">65%</p>
-                                                                                    <p>85/162</p>
-                                                                                </div>
-                                                                                <div class="progress progress-md">
-                                                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 38%" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="badge badge-opacity-warning">In progress</div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-check form-check-flat mt-0">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="d-flex">
-                                                                                <img th:src="@{images/faces/face4.jpg}" alt="">
-                                                                                <div>
-                                                                                    <h6>Matthew Bailey</h6>
-                                                                                    <p>Head admin</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <h6>Company name 1</h6>
-                                                                            <p>company type</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div>
-                                                                                <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                    <p class="text-success">65%</p>
-                                                                                    <p>85/162</p>
-                                                                                </div>
-                                                                                <div class="progress progress-md">
-                                                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="badge badge-opacity-danger">Pending</div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-check form-check-flat mt-0">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="d-flex">
-                                                                                <img th:src="@{images/faces/face5.jpg}" alt="">
-                                                                                <div>
-                                                                                    <h6>Katherine Butler</h6>
-                                                                                    <p>Head admin</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <h6>Company name 1</h6>
-                                                                            <p>company type</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div>
-                                                                                <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                    <p class="text-success">65%</p>
-                                                                                    <p>85/162</p>
-                                                                                </div>
-                                                                                <div class="progress progress-md">
-                                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="badge badge-opacity-success">Completed</div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row flex-grow">
-                                                <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body card-rounded">
-                                                            <h4 class="card-title  card-title-dash">Recent Events</h4>
-                                                            <div class="list align-items-center border-bottom py-2">
-                                                                <div class="wrapper w-100">
-                                                                    <p class="mb-2 fw-medium"> Change in Directors </p>
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                                            <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="list align-items-center border-bottom py-2">
-                                                                <div class="wrapper w-100">
-                                                                    <p class="mb-2 fw-medium"> Other Events </p>
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                                            <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="list align-items-center border-bottom py-2">
-                                                                <div class="wrapper w-100">
-                                                                    <p class="mb-2 fw-medium"> Quarterly Report </p>
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                                            <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="list align-items-center border-bottom py-2">
-                                                                <div class="wrapper w-100">
-                                                                    <p class="mb-2 fw-medium"> Change in Directors </p>
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                                            <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="list align-items-center pt-3">
-                                                                <div class="wrapper w-100">
-                                                                    <p class="mb-0">
-                                                                        <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                                                <h4 class="card-title card-title-dash">Activities</h4>
-                                                                <p class="mb-0">20 finished, 5 remaining</p>
-                                                            </div>
-                                                            <ul class="bullet-line-list">
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                                                        <p>Just now</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
-                                                                        <p>1h</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Jack William</span> assign you a task</div>
-                                                                        <p>1h</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
-                                                                        <p>1h</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
-                                                                        <p>1h</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                                                        <p>1h</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                                                        <p>1h</p>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="list align-items-center pt-3">
-                                                                <div class="wrapper w-100">
-                                                                    <p class="mb-0">
-                                                                        <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 d-flex flex-column">
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <h4 class="card-title card-title-dash">Todo list</h4>
-                                                                        <div class="add-items d-flex mb-0">
-                                                                            <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
-                                                                            <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="list-wrapper">
-                                                                        <ul class="todo-list todo-list-rounded">
-                                                                            <li class="d-block">
-                                                                                <div class="form-check w-100">
-                                                                                    <label class="form-check-label">
-                                                                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                                                                    </label>
-                                                                                    <div class="d-flex mt-2">
-                                                                                        <div class="ps-4 text-small me-3">24 June 2020</div>
-                                                                                        <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
-                                                                                        <i class="mdi mdi-flag ms-2 flag-color"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="d-block">
-                                                                                <div class="form-check w-100">
-                                                                                    <label class="form-check-label">
-                                                                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                                                                    </label>
-                                                                                    <div class="d-flex mt-2">
-                                                                                        <div class="ps-4 text-small me-3">23 June 2020</div>
-                                                                                        <div class="badge badge-opacity-success me-3">Done</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li>
-                                                                                <div class="form-check w-100">
-                                                                                    <label class="form-check-label">
-                                                                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                                                                    </label>
-                                                                                    <div class="d-flex mt-2">
-                                                                                        <div class="ps-4 text-small me-3">24 June 2020</div>
-                                                                                        <div class="badge badge-opacity-success me-3">Done</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="border-bottom-0">
-                                                                                <div class="form-check w-100">
-                                                                                    <label class="form-check-label">
-                                                                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                                                                    </label>
-                                                                                    <div class="d-flex mt-2">
-                                                                                        <div class="ps-4 text-small me-3">24 June 2020</div>
-                                                                                        <div class="badge badge-opacity-danger me-3">Expired</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                                                        <h4 class="card-title card-title-dash">Type By Amount</h4>
-                                                                    </div>
-                                                                    <div>
-                                                                        <canvas class="my-auto" id="doughnutChart"></canvas>
-                                                                    </div>
-                                                                    <div id="doughnutChart-legend" class="mt-5 text-center"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                                                        <div>
-                                                                            <h4 class="card-title card-title-dash">Leave Report</h4>
-                                                                        </div>
-                                                                        <div>
-                                                                            <div class="dropdown">
-                                                                                <button class="btn btn-light dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Month Wise </button>
-                                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                                                                    <h6 class="dropdown-header">week Wise</h6>
-                                                                                    <a class="dropdown-item" href="#">Year Wise</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="mt-3">
-                                                                        <canvas id="leaveReport"></canvas>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row flex-grow">
-                                                <div class="col-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                                                        <div>
-                                                                            <h4 class="card-title card-title-dash">Top Performer</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="mt-3">
-                                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                            <div class="d-flex">
-                                                                                <img class="img-sm rounded-10" th:src="@{~/images/faces/face1.jpg}" alt="profile">
-                                                                                <div class="wrapper ms-3">
-                                                                                    <p class="ms-1 mb-1 fw-bold">Brandon Washington</p>
-                                                                                    <small class="text-muted mb-0">162543</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-muted text-small"> 1h ago </div>
-                                                                        </div>
-                                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                            <div class="d-flex">
-                                                                                <img class="img-sm rounded-10" th:src="@{~/images/faces/face2.jpg}" alt="profile">
-                                                                                <div class="wrapper ms-3">
-                                                                                    <p class="ms-1 mb-1 fw-bold">Wayne Murphy</p>
-                                                                                    <small class="text-muted mb-0">162543</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-muted text-small"> 1h ago </div>
-                                                                        </div>
-                                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                            <div class="d-flex">
-                                                                                <img class="img-sm rounded-10" th:src="@{~/images/faces/face3.jpg}" alt="profile">
-                                                                                <div class="wrapper ms-3">
-                                                                                    <p class="ms-1 mb-1 fw-bold">Katherine Butler</p>
-                                                                                    <small class="text-muted mb-0">162543</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-muted text-small"> 1h ago </div>
-                                                                        </div>
-                                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                            <div class="d-flex">
-                                                                                <img class="img-sm rounded-10" th:src="@{~/images/faces/face4.jpg}" alt="profile">
-                                                                                <div class="wrapper ms-3">
-                                                                                    <p class="ms-1 mb-1 fw-bold">Matthew Bailey</p>
-                                                                                    <small class="text-muted mb-0">162543</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-muted text-small"> 1h ago </div>
-                                                                        </div>
-                                                                        <div class="wrapper d-flex align-items-center justify-content-between pt-2">
-                                                                            <div class="d-flex">
-                                                                                <img class="img-sm rounded-10" th:src="@{~/images/faces/face5.jpg}" alt="profile">
-                                                                                <div class="wrapper ms-3">
-                                                                                    <p class="ms-1 mb-1 fw-bold">Rafell John</p>
-                                                                                    <small class="text-muted mb-0">Alaska, USA</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-muted text-small"> 1h ago </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                <div class="mt-1 text-xs leading-5 text-gray-500">Invoice <span class="text-gray-900">#00010</span></div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Recent client list-->
+                    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-base font-semibold leading-7 text-gray-900">Recent clients</h2>
+                                <a href="#" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">View all<span class="sr-only">, clients</span></a>
+                            </div>
+                            <ul role="list" class="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+                                <li class="overflow-hidden rounded-xl border border-gray-200">
+                                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
+                                        <img src="https://tailwindui.com/img/logos/48x48/tuple.svg" alt="Tuple" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10">
+                                        <div class="text-sm font-medium leading-6 text-gray-900">Tuple</div>
+                                        <div class="relative ml-auto">
+                                            <button type="button" class="-m-2.5 block p-2.5 text-gray-400 hover:text-gray-500" id="options-menu-0-button" aria-expanded="false" aria-haspopup="true">
+                                                <span class="sr-only">Open options</span>
+                                                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path d="M3 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM8.5 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM15.5 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+                                                </svg>
+                                            </button>
+
+                                            <!--
+                                              Dropdown menu, show/hide based on menu state.
+
+                                              Entering: "transition ease-out duration-100"
+                                                From: "transform opacity-0 scale-95"
+                                                To: "transform opacity-100 scale-100"
+                                              Leaving: "transition ease-in duration-75"
+                                                From: "transform opacity-100 scale-100"
+                                                To: "transform opacity-0 scale-95"
+                                            -->
+                                            <div class="absolute right-0 z-10 mt-0.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-0-button" tabindex="-1">
+                                                <!-- Active: "bg-gray-50", Not Active: "" -->
+                                                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="options-menu-0-item-0">View<span class="sr-only">, Tuple</span></a>
+                                                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="options-menu-0-item-1">Edit<span class="sr-only">, Tuple</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt class="text-gray-500">Last invoice</dt>
+                                            <dd class="text-gray-700"><time datetime="2022-12-13">December 13, 2022</time></dd>
+                                        </div>
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt class="text-gray-500">Amount</dt>
+                                            <dd class="flex items-start gap-x-2">
+                                                <div class="font-medium text-gray-900">$2,000.00</div>
+                                                <div class="rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Overdue</div>
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </li>
+                                <li class="overflow-hidden rounded-xl border border-gray-200">
+                                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
+                                        <img src="https://tailwindui.com/img/logos/48x48/savvycal.svg" alt="SavvyCal" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10">
+                                        <div class="text-sm font-medium leading-6 text-gray-900">SavvyCal</div>
+                                        <div class="relative ml-auto">
+                                            <button type="button" class="-m-2.5 block p-2.5 text-gray-400 hover:text-gray-500" id="options-menu-1-button" aria-expanded="false" aria-haspopup="true">
+                                                <span class="sr-only">Open options</span>
+                                                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path d="M3 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM8.5 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM15.5 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+                                                </svg>
+                                            </button>
+
+                                            <!--
+                                              Dropdown menu, show/hide based on menu state.
+
+                                              Entering: "transition ease-out duration-100"
+                                                From: "transform opacity-0 scale-95"
+                                                To: "transform opacity-100 scale-100"
+                                              Leaving: "transition ease-in duration-75"
+                                                From: "transform opacity-100 scale-100"
+                                                To: "transform opacity-0 scale-95"
+                                            -->
+                                            <div class="absolute right-0 z-10 mt-0.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-1-button" tabindex="-1">
+                                                <!-- Active: "bg-gray-50", Not Active: "" -->
+                                                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="options-menu-1-item-0">View<span class="sr-only">, SavvyCal</span></a>
+                                                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="options-menu-1-item-1">Edit<span class="sr-only">, SavvyCal</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt class="text-gray-500">Last invoice</dt>
+                                            <dd class="text-gray-700"><time datetime="2023-01-22">January 22, 2023</time></dd>
+                                        </div>
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt class="text-gray-500">Amount</dt>
+                                            <dd class="flex items-start gap-x-2">
+                                                <div class="font-medium text-gray-900">$14,000.00</div>
+                                                <div class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Paid</div>
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </li>
+                                <li class="overflow-hidden rounded-xl border border-gray-200">
+                                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
+                                        <img src="https://tailwindui.com/img/logos/48x48/reform.svg" alt="Reform" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10">
+                                        <div class="text-sm font-medium leading-6 text-gray-900">Reform</div>
+                                        <div class="relative ml-auto">
+                                            <button type="button" class="-m-2.5 block p-2.5 text-gray-400 hover:text-gray-500" id="options-menu-2-button" aria-expanded="false" aria-haspopup="true">
+                                                <span class="sr-only">Open options</span>
+                                                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path d="M3 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM8.5 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM15.5 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+                                                </svg>
+                                            </button>
+
+                                            <!--
+                                              Dropdown menu, show/hide based on menu state.
+
+                                              Entering: "transition ease-out duration-100"
+                                                From: "transform opacity-0 scale-95"
+                                                To: "transform opacity-100 scale-100"
+                                              Leaving: "transition ease-in duration-75"
+                                                From: "transform opacity-100 scale-100"
+                                                To: "transform opacity-0 scale-95"
+                                            -->
+                                            <div class="absolute right-0 z-10 mt-0.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-2-button" tabindex="-1">
+                                                <!-- Active: "bg-gray-50", Not Active: "" -->
+                                                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="options-menu-2-item-0">View<span class="sr-only">, Reform</span></a>
+                                                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="options-menu-2-item-1">Edit<span class="sr-only">, Reform</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt class="text-gray-500">Last invoice</dt>
+                                            <dd class="text-gray-700"><time datetime="2023-01-23">January 23, 2023</time></dd>
+                                        </div>
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt class="text-gray-500">Amount</dt>
+                                            <dd class="flex items-start gap-x-2">
+                                                <div class="font-medium text-gray-900">$7,600.00</div>
+                                                <div class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Paid</div>
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <!-- // Your content End-->
             </div>
-            <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
-            <div th:replace="_footer_content::footer_content"></div>
-            <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
+        </main>
     </div>
-    <!-- page-body-wrapper ends -->
 </div>
+
+
 <div th:replace="_footer_script::footer_script"></div>
+
+
 </body>
 </html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('회원관리 : 리스트 조회 : Buza Admin')"></head>
+<body class="with-welcome-text">
+<div class="container-scroller">
+
+
+    <div th:replace="_pro_banner::pro_banner"></div>
+    <div th:replace="_top_nav::top_nav"></div>
+
+    <!-- container start -->
+    <div class="container-fluid page-body-wrapper pt-0">
+        <div th:replace="_left_nav::left_nav"></div>
+        <!-- main-panel start -->
+        <div class="main-panel" id="app">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">회원정보 조회</h4>
+                            <p class="card-description">aasdfasfsadf</p>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>| No. |</th>
+                                        <th>| 아이디. |</th>
+                                        <th>| Created |</th>
+                                        <th>| Status. |</th>
+                                        <th>| Action. |</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(account, idx) in accounts" :key="idx">
+                                            <td>{{ idx + 1 }}</td>
+                                            <td>{{ account.accountUsername }}</td>
+                                            <td>{{ account.createdAt }}</td>
+                                            <td>
+                                                <label :class="['badge', account.status === '0' ? 'badge-success' : 'badge-danger']">
+                                                    {{ account.status === '0' ? '0000' : '1111' }}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-dark btn-sm me-2">View</button>
+                                                <button type="button" class="btn btn-light btn-sm">Edit</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pointer">
+                                <a @click="onPageChange(pagination.currentPage - 1)">&lt;&lt;</a> &nbsp;&nbsp;
+                                <a v-for="(paging, index) in pages" :key="index" @click="onPageChange(paging)" :class="paging === pagination.currentPage ? 'currentPage' : ''">{{ paging }} &nbsp;&nbsp;</a>
+                                <a @click="onPageChange(pagination.currentPage + 1)">&gt;</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div th:replace="_footer_content::footer_content"></div>
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- // container start ends -->
+</div>
+<div th:replace="_footer_script::footer_script"></div>
+
+<script setup>
+    // const { createApp, onMounted, ref, computed, watch } = Vue;
+    // createApp({
+    //     setup() {
+    //         const accounts = ref([]);
+    //         const pagination = ref({
+    //             currentPage: 1,
+    //             pageSize: 5,
+    //             totalPages: 0,
+    //             totalElements: 0
+    //         });
+    //
+    //         const currentPage = computed({
+    //             get() {
+    //                 return pagination.value.currentPage;
+    //             },
+    //             set(value) {
+    //                 if (value < 1) {
+    //                     alert('첫 페이지입니다.');
+    //                     return;
+    //                 }
+    //                 if (value > pagination.value.totalPages) {
+    //                     alert('마지막 페이지입니다.');
+    //                     return;
+    //                 }
+    //                 pagination.value.currentPage = value;
+    //                 getAccountAll(value);
+    //             }
+    //         });
+    //
+    //         const startPage = computed(() => {
+    //             return parseInt((pagination.value.currentPage - 1) / 5) * 5 + 1;
+    //         });
+    //
+    //         const endPage = computed(() => {
+    //             let lastPage = parseInt((pagination.value.currentPage - 1) / 5) * 5 + 5;
+    //             return lastPage <= pagination.value.totalPages ? lastPage : pagination.value.totalPages;
+    //         });
+    //
+    //         const pages = computed(() => {
+    //             const list = [];
+    //             for (let index = startPage.value; index <= endPage.value; index += 1) {
+    //                 list.push(index);
+    //             }
+    //             return list;
+    //         });
+    //
+    //         const onPageChange = (val) => {
+    //             if (val < 1) {
+    //                 alert('첫 페이지입니다.');
+    //                 return;
+    //             }
+    //             if (val > pagination.value.totalPages) {
+    //                 alert('마지막 페이지입니다.');
+    //                 return;
+    //             }
+    //             pagination.value.currentPage = val;
+    //             getAccountAll(val);
+    //         };
+    //
+    //         const getAccountAll = async (pageNum) => {
+    //             try {
+    //                 const res = await axios.get("/api/admin/account", {
+    //                     params: {
+    //                         page: pageNum - 1, // Spring Data JPA는 0부터 시작합니다.
+    //                         size: pagination.value.pageSize // 페이지 크기를 여기에 설정합니다.
+    //                     }
+    //                 });
+    //                 accounts.value = res.data.content;
+    //                 pagination.value.totalElements = res.data.totalElements;
+    //                 pagination.value.totalPages = res.data.totalPages;
+    //             } catch (error) {
+    //                 console.log(error);
+    //             }
+    //         };
+    //
+    //
+    //         onMounted(() => {
+    //             getAccountAll(pagination.value.currentPage);
+    //         });
+    //
+    //         return {
+    //             accounts,
+    //             pagination,
+    //             pages,
+    //             startPage,
+    //             endPage,
+    //             onPageChange,
+    //             currentPage
+    //         };
+    //     }
+    // }).mount('#app');
+
+
+    const { createApp, onMounted, ref, computed } = Vue;
+
+    createApp({
+        setup() {
+            const accounts = ref([]);
+            const pagination = ref({
+                currentPage: 1,
+                pageSize: 2,
+                totalPages: 0,
+                totalElements: 0
+            });
+
+            const startPage = computed(() => parseInt((pagination.value.currentPage - 1) / 5) * 2 + 1);
+
+            const endPage = computed(() => {
+                let lastPage = parseInt((pagination.value.currentPage - 1) / 5) * 2 + 5;
+                return lastPage <= pagination.value.totalPages ? lastPage : pagination.value.totalPages;
+            });
+
+            const pages = computed(() => {
+                const list = [];
+                for (let index = startPage.value; index <= endPage.value; index++) {
+                    list.push(index);
+                }
+                return list;
+            });
+
+            const onPageChange = (val) => {
+                if (val < 1) {
+                    alert('첫 페이지입니다.');
+                    return;
+                }
+                if (val > pagination.value.totalPages) {
+                    alert('마지막 페이지입니다.');
+                    return;
+                }
+                pagination.value.currentPage = val;
+                getAccountAll(val);
+            };
+
+            const getAccountAll = async (pageNum) => {
+                try {
+                    const res = await axios.get("/api/admin/account", {
+                        params: {
+                            page: pageNum - 1,
+                            size: pagination.value.pageSize
+                        }
+                    });
+                    accounts.value = res.data.content;
+                    pagination.value.totalElements = res.data.totalElements;
+                    pagination.value.totalPages = res.data.totalPages;
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+
+            onMounted(() => getAccountAll(pagination.value.currentPage));
+
+            return {
+                accounts,
+                pagination,
+                pages,
+                onPageChange
+            };
+        }
+    }).mount('#app');
+</script>
+
+</body>
+</html>

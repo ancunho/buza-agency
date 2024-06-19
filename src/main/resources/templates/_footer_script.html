@@ -1,6 +1,50 @@
 <div th:fragment="footer_script">
     <script th:src="@{~/js/vue.global.js}"></script>
+    <script th:src="@{~/js/tailwind.3.4.4.min.js}"></script>
     <script th:src="@{~/js/sweetalert2.js}"></script>
     <script th:src="@{~/js/axios.min.js}"></script>
     <script th:src="@{~/js/common.js}"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        const childApp = createApp({
+            data() {
+                return {
+                    msg: 'hello'
+                }
+            }
+        });
+
+        createApp({
+
+            data() {
+                return {
+                    showLeftNav: false,
+                    showProfile: false
+                }
+            },
+            methods: {
+                toggleProfile() {
+                    this.showProfile = !this.showProfile;
+                },
+                handleOutsideClick(event) {
+                    if (this.showProfile && !this.$el.contains(event.target)) {
+                        this.showProfile = false;
+                    }
+                }
+            },
+            mounted() {
+                document.addEventListener('click', this.handleOutsideClick);
+                childApp.mount('#app');
+            },
+            beforeUnmount() {
+                document.removeEventListener('click', this.handleOutsideClick);
+            }
+
+        }).mount('#buza-container');
+
+
+    </script>
+
 </div>

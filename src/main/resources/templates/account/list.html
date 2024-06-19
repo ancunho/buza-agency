@@ -1,77 +1,166 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
-<head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('회원관리 : 리스트 조회 : Buza Admin')"></head>
-<body class="with-welcome-text">
-<div class="container-scroller">
+<html class="h-full bg-white" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head xmlns:th="https://www.thymeleaf.org" th:replace="_head_meta::head_meta('Buza Admin')"></head>
+<body class="h-full">
 
+<div id="buza-container" @click="handleOutsideClick">
 
-    <div th:replace="_pro_banner::pro_banner"></div>
-    <div th:replace="_top_nav::top_nav"></div>
+    <div th:replace="_left_nav::left_nav"></div>
 
-    <!-- container start -->
-    <div class="container-fluid page-body-wrapper pt-0">
-        <div th:replace="_left_nav::left_nav"></div>
-        <!-- main-panel start -->
-        <div class="main-panel" id="app">
-            <div class="content-wrapper">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">회원정보 조회</h4>
-                            <p class="card-description">aasdfasfsadf</p>
-                            <div class="table-responsive">
-                                <table class="table">
+    <div class="lg:pl-72">
+        <div th:replace="_top_nav::top_nav"></div>
+
+        <main class="py-10 " id="app">
+            <div class="px-4 sm:px-6 lg:px-8">
+                <!-- Your content Start-->
+                <div class="px-4 sm:px-6 lg:px-4">
+                    <div class="sm:flex sm:items-center">
+                        <div class="sm:flex-auto">
+                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{msg}}</h1>
+                            <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including
+                                their name, title, email and role.</p>
+                        </div>
+                        <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+                            <button type="button"
+                                    class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                Add user
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-8 flow-root">
+                        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                <table class="min-w-full divide-y divide-gray-300">
                                     <thead>
-                                    <tr>
-                                        <th>| No. |</th>
-                                        <th>| 아이디. |</th>
-                                        <th>| Created |</th>
-                                        <th>| Status. |</th>
-                                        <th>| Action. |</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(account, idx) in accounts" :key="idx">
-                                            <td>{{ idx + 1 }}</td>
-                                            <td>{{ account.accountUsername }}</td>
-                                            <td>{{ account.createdAt }}</td>
-                                            <td>
-                                                <label :class="['badge', account.status === '0' ? 'badge-success' : 'badge-danger']">
-                                                    {{ account.status === '0' ? '0000' : '1111' }}
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-dark btn-sm me-2">View</button>
-                                                <button type="button" class="btn btn-light btn-sm">Edit</button>
-                                            </td>
+                                        <tr>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                                                <a href="#" class="group inline-flex">
+                                                    Name {{ msg }}
+                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                                    <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+                                                             aria-hidden="true">
+                                                          <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </th>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                                                <a href="#" class="group inline-flex">
+                                                    Name
+                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                                    <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+                                                             aria-hidden="true">
+                                                          <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </th>
+                                            <th scope="col"
+                                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                <a href="#" class="group inline-flex">
+                                                    Title
+                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                                    <span class="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200">
+                                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </th>
+                                            <th scope="col"
+                                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                <a href="#" class="group inline-flex">
+                                                    Email
+                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                                    <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                                                        <svg class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </th>
+                                            <th scope="col"
+                                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                <a href="#" class="group inline-flex">
+                                                    Role
+                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                                    <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                                                        <svg class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </th>
+                                            <th scope="col" class="relative py-3.5 pl-3 pr-0">
+                                                <span class="sr-only">Edit</span>
+                                            </th>
                                         </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+
+<!--                                        <tr v-for="(account, idx) in accounts" :key="idx">-->
+<!--                                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">-->
+<!--                                                {{ idx + 1 }}-->
+<!--                                            </td>-->
+<!--                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.accountUsername }}</td>-->
+<!--                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.createdAt }}</td>-->
+<!--                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">-->
+<!--                                                <label :class="['badge', account.status === '0' ? 'badge-success' : 'badge-danger']">-->
+<!--                                                    {{ account.status === '0' ? '0000' : '1111' }}-->
+<!--                                                </label>-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <button type="button" class="rounded bg-indigo-600 px-2 py-1 text-xs text-white shadow-sm hover:bg-indigo-500">Button text</button>-->
+<!--                                                <button type="button" class="btn btn-dark btn-sm me-2">View</button>-->
+<!--                                                <button type="button" class="btn btn-light btn-sm">Edit</button>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                     </tbody>
                                 </table>
-                            </div>
 
-                            <div class="pointer">
-                                <a @click="onPageChange(pagination.currentPage - 1)">&lt;&lt;</a> &nbsp;&nbsp;
-                                <a v-for="(paging, index) in pages" :key="index" @click="onPageChange(paging)" :class="paging === pagination.currentPage ? 'currentPage' : ''">{{ paging }} &nbsp;&nbsp;</a>
-                                <a @click="onPageChange(pagination.currentPage + 1)">&gt;</a>
-                            </div>
 
+                            </div>
                         </div>
-
                     </div>
-
-
+<!--                    <div class="pointer">-->
+<!--                        <a @click="onPageChange(pagination.currentPage - 1)">&lt;&lt;</a> &nbsp;&nbsp;-->
+<!--                        <a v-for="(paging, index) in pages" :key="index" @click="onPageChange(paging)" :class="paging === pagination.currentPage ? 'currentPage' : ''">{{ paging }} &nbsp;&nbsp;</a>-->
+<!--                        <a @click="onPageChange(pagination.currentPage + 1)">&gt;</a>-->
+<!--                    </div>-->
                 </div>
+
+                <!-- // Your content End-->
             </div>
-            <div th:replace="_footer_content::footer_content"></div>
-        </div>
-        <!-- main-panel ends -->
+        </main>
     </div>
-    <!-- // container start ends -->
 </div>
+
+
 <div th:replace="_footer_script::footer_script"></div>
 
-<script setup>
-    // const { createApp, onMounted, ref, computed, watch } = Vue;
+<script >
+    // const { createApp } = Vue;
+
+
+
+    // const { ref,onMounted,computed } = Vue;
+    //
     // createApp({
     //     setup() {
     //         const accounts = ref([]);
@@ -82,27 +171,7 @@
     //             totalElements: 0
     //         });
     //
-    //         const currentPage = computed({
-    //             get() {
-    //                 return pagination.value.currentPage;
-    //             },
-    //             set(value) {
-    //                 if (value < 1) {
-    //                     alert('첫 페이지입니다.');
-    //                     return;
-    //                 }
-    //                 if (value > pagination.value.totalPages) {
-    //                     alert('마지막 페이지입니다.');
-    //                     return;
-    //                 }
-    //                 pagination.value.currentPage = value;
-    //                 getAccountAll(value);
-    //             }
-    //         });
-    //
-    //         const startPage = computed(() => {
-    //             return parseInt((pagination.value.currentPage - 1) / 5) * 5 + 1;
-    //         });
+    //         const startPage = computed(() => parseInt((pagination.value.currentPage - 1) / 5) * 5 + 1);
     //
     //         const endPage = computed(() => {
     //             let lastPage = parseInt((pagination.value.currentPage - 1) / 5) * 5 + 5;
@@ -111,9 +180,10 @@
     //
     //         const pages = computed(() => {
     //             const list = [];
-    //             for (let index = startPage.value; index <= endPage.value; index += 1) {
+    //             for (let index = startPage.value; index <= endPage.value; index++) {
     //                 list.push(index);
     //             }
+    //
     //             return list;
     //         });
     //
@@ -134,8 +204,8 @@
     //             try {
     //                 const res = await axios.get("/api/admin/account", {
     //                     params: {
-    //                         page: pageNum - 1, // Spring Data JPA는 0부터 시작합니다.
-    //                         size: pagination.value.pageSize // 페이지 크기를 여기에 설정합니다.
+    //                         page: pageNum,
+    //                         size: pagination.value.pageSize
     //                     }
     //                 });
     //                 accounts.value = res.data.content;
@@ -146,90 +216,16 @@
     //             }
     //         };
     //
-    //
-    //         onMounted(() => {
-    //             getAccountAll(pagination.value.currentPage);
-    //         });
+    //         onMounted(() => getAccountAll(pagination.value.currentPage));
     //
     //         return {
     //             accounts,
     //             pagination,
     //             pages,
-    //             startPage,
-    //             endPage,
-    //             onPageChange,
-    //             currentPage
+    //             onPageChange
     //         };
     //     }
     // }).mount('#app');
-
-
-    const { createApp, onMounted, ref, computed } = Vue;
-
-    createApp({
-        setup() {
-            const accounts = ref([]);
-            const pagination = ref({
-                currentPage: 1,
-                pageSize: 2,
-                totalPages: 0,
-                totalElements: 0
-            });
-
-            const startPage = computed(() => parseInt((pagination.value.currentPage - 1) / 5) * 2 + 1);
-
-            const endPage = computed(() => {
-                let lastPage = parseInt((pagination.value.currentPage - 1) / 5) * 2 + 5;
-                return lastPage <= pagination.value.totalPages ? lastPage : pagination.value.totalPages;
-            });
-
-            const pages = computed(() => {
-                const list = [];
-                for (let index = startPage.value; index <= endPage.value; index++) {
-                    list.push(index);
-                }
-                return list;
-            });
-
-            const onPageChange = (val) => {
-                if (val < 1) {
-                    alert('첫 페이지입니다.');
-                    return;
-                }
-                if (val > pagination.value.totalPages) {
-                    alert('마지막 페이지입니다.');
-                    return;
-                }
-                pagination.value.currentPage = val;
-                getAccountAll(val);
-            };
-
-            const getAccountAll = async (pageNum) => {
-                try {
-                    const res = await axios.get("/api/admin/account", {
-                        params: {
-                            page: pageNum - 1,
-                            size: pagination.value.pageSize
-                        }
-                    });
-                    accounts.value = res.data.content;
-                    pagination.value.totalElements = res.data.totalElements;
-                    pagination.value.totalPages = res.data.totalPages;
-                } catch (error) {
-                    console.log(error);
-                }
-            };
-
-            onMounted(() => getAccountAll(pagination.value.currentPage));
-
-            return {
-                accounts,
-                pagination,
-                pages,
-                onPageChange
-            };
-        }
-    }).mount('#app');
 </script>
 
 </body>

@@ -1,7 +1,9 @@
-var contextRootPath = "";
+const contextRootPath = "";
+
+
 
 function BuzaRouter(url) {
-    var $frmBUZACommon = $("#frmBUZACommon");
+    let $frmBUZACommon = $("#frmBUZACommon");
     if($frmBUZACommon.length < 1) {
         $frmBUZACommon = $("<form/>").attr({id:"frmBUZACommon", method:'GET'});
         $(document.body).append($frmBUZACommon);
@@ -12,3 +14,4 @@ function BuzaRouter(url) {
 
     $frmBUZACommon.submit();
 }
+
