@@ -32,7 +32,7 @@ public class AccountService {
     }
 
     public Page<AccountDto> getAccountAll(Pageable pageable) {
-        return accountRepository.findAll(pageable).map(AccountDto::fromEntity);
+        return accountRepository.findAll(pageable).map(AccountDto::fromEntitytoDto);
     }
 
 

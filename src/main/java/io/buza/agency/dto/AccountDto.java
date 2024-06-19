@@ -33,7 +33,6 @@ public class AccountDto {
     private String modifiedBy;
 
 
-    @Builder
     public static Account toEntity(AccountDto accountDto) {
         return Account.builder()
                 .accountSeq(accountDto.accountSeq)
@@ -90,7 +89,7 @@ public class AccountDto {
         this.modifiedBy = modifiedBy;
     }
 
-    public static AccountDto fromEntity(Account entity) {
+    public static AccountDto fromEntitytoDto(Account entity) {
         return new AccountDto(
                 entity.getAccountSeq(),
                 entity.getAccountUsername(),

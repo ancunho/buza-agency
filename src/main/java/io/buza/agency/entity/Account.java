@@ -1,10 +1,12 @@
 package io.buza.agency.entity;
 
+import io.buza.agency.dto.AccountDto;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
 
+@Builder
 @Getter
 @NoArgsConstructor
 @ToString(callSuper = true)
@@ -39,7 +41,7 @@ public class Account extends BaseEntity {
     @Setter @Column private String avatar;
     @Setter @Column private String country;
 
-    @Builder
+
     public Account(Long accountSeq, String accountUsername, String accountPassword, String accountRole, String status, String realName, String birthday, String gender, String accountType, String accountLevel, String nickname, String avatar, String country) {
         this.accountSeq = accountSeq;
         this.accountUsername = accountUsername;
@@ -55,6 +57,8 @@ public class Account extends BaseEntity {
         this.avatar = avatar;
         this.country = country;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
