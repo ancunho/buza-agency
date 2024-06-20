@@ -16,15 +16,14 @@
                 <div class="px-4 sm:px-6 lg:px-4">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
-                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{msg}}</h1>
+                            <h1 class="text-base font-semibold leading-6 text-gray-900">Account List.</h1>
                             <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including
                                 their name, title, email and role.</p>
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <button type="button"
-                                    class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                Add user
-                            </button>
+                            <a href="/admin/account/create_new" class="cursor-pointer block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                + Create New Account
+                            </a>
                         </div>
                     </div>
                     <div class="mt-8 flow-root">
@@ -33,21 +32,6 @@
                                 <table class="min-w-full divide-y divide-gray-300">
                                     <thead>
                                         <tr>
-                                            <th scope="col"
-                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                                                <a href="#" class="group inline-flex">
-                                                    Name {{ msg }}
-                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                                                    <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                                             aria-hidden="true">
-                                                          <path fill-rule="evenodd"
-                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                                                clip-rule="evenodd"/>
-                                                        </svg>
-                                                    </span>
-                                                </a>
-                                            </th>
                                             <th scope="col"
                                                 class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
                                                 <a href="#" class="group inline-flex">
@@ -114,23 +98,20 @@
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
 
-<!--                                        <tr v-for="(account, idx) in accounts" :key="idx">-->
-<!--                                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">-->
-<!--                                                {{ idx + 1 }}-->
-<!--                                            </td>-->
-<!--                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.accountUsername }}</td>-->
-<!--                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.createdAt }}</td>-->
-<!--                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">-->
-<!--                                                <label :class="['badge', account.status === '0' ? 'badge-success' : 'badge-danger']">-->
-<!--                                                    {{ account.status === '0' ? '0000' : '1111' }}-->
-<!--                                                </label>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <button type="button" class="rounded bg-indigo-600 px-2 py-1 text-xs text-white shadow-sm hover:bg-indigo-500">Button text</button>-->
-<!--                                                <button type="button" class="btn btn-dark btn-sm me-2">View</button>-->
-<!--                                                <button type="button" class="btn btn-light btn-sm">Edit</button>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
+                                        <tr v-for="(account, idx) in accounts" :key="idx">
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.accountUsername }}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.createdAt }}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                <label :class="['badge', account.status === '0' ? 'badge-success' : 'badge-danger']">
+                                                    {{ account.status === '0' ? '0000' : '1111' }}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="rounded bg-indigo-600 px-2 py-1 text-xs text-white shadow-sm hover:bg-indigo-500">Button text</button>
+                                                <button type="button" class="btn btn-dark btn-sm me-2">View</button>
+                                                <button type="button" class="btn btn-light btn-sm">Edit</button>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -138,11 +119,46 @@
                             </div>
                         </div>
                     </div>
-<!--                    <div class="pointer">-->
-<!--                        <a @click="onPageChange(pagination.currentPage - 1)">&lt;&lt;</a> &nbsp;&nbsp;-->
-<!--                        <a v-for="(paging, index) in pages" :key="index" @click="onPageChange(paging)" :class="paging === pagination.currentPage ? 'currentPage' : ''">{{ paging }} &nbsp;&nbsp;</a>-->
-<!--                        <a @click="onPageChange(pagination.currentPage + 1)">&gt;</a>-->
-<!--                    </div>-->
+
+                    <!-- Pagination Start -->
+                    <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                        <div class="flex flex-1 justify-between sm:hidden">
+                            <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+                            <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+                        </div>
+                        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm text-gray-700">
+                                    Total: <span class="font-bold">{{pagination.totalElements}}</span> results
+                                </p>
+                            </div>
+                            <div>
+                                <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                    <a  @click="onPageChange(pagination.currentPage - 1)" class="cursor-pointer relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                        <span class="sr-only">Previous</span>
+                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                    <a v-for="(paging, index) in pages" :key="index" @click="onPageChange(paging)"
+                                       :class="paging === pagination.currentPage ?
+                                       'cursor-pointer relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                       : 'cursor-pointer relative hidden items-center px-4 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex'">
+                                        {{ paging }}
+                                    </a>
+                                    <a @click="onPageChange(pagination.currentPage + 1)" class="cursor-pointer relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                        <span class="sr-only">Next</span>
+                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // Pagination End -->
+
+
                 </div>
 
                 <!-- // Your content End-->
@@ -154,78 +170,69 @@
 
 <div th:replace="_footer_script::footer_script"></div>
 
-<script >
-    // const { createApp } = Vue;
+<script>
 
-
-
-    // const { ref,onMounted,computed } = Vue;
-    //
-    // createApp({
-    //     setup() {
-    //         const accounts = ref([]);
-    //         const pagination = ref({
-    //             currentPage: 1,
-    //             pageSize: 5,
-    //             totalPages: 0,
-    //             totalElements: 0
-    //         });
-    //
-    //         const startPage = computed(() => parseInt((pagination.value.currentPage - 1) / 5) * 5 + 1);
-    //
-    //         const endPage = computed(() => {
-    //             let lastPage = parseInt((pagination.value.currentPage - 1) / 5) * 5 + 5;
-    //             return lastPage <= pagination.value.totalPages ? lastPage : pagination.value.totalPages;
-    //         });
-    //
-    //         const pages = computed(() => {
-    //             const list = [];
-    //             for (let index = startPage.value; index <= endPage.value; index++) {
-    //                 list.push(index);
-    //             }
-    //
-    //             return list;
-    //         });
-    //
-    //         const onPageChange = (val) => {
-    //             if (val < 1) {
-    //                 alert('첫 페이지입니다.');
-    //                 return;
-    //             }
-    //             if (val > pagination.value.totalPages) {
-    //                 alert('마지막 페이지입니다.');
-    //                 return;
-    //             }
-    //             pagination.value.currentPage = val;
-    //             getAccountAll(val);
-    //         };
-    //
-    //         const getAccountAll = async (pageNum) => {
-    //             try {
-    //                 const res = await axios.get("/api/admin/account", {
-    //                     params: {
-    //                         page: pageNum,
-    //                         size: pagination.value.pageSize
-    //                     }
-    //                 });
-    //                 accounts.value = res.data.content;
-    //                 pagination.value.totalElements = res.data.totalElements;
-    //                 pagination.value.totalPages = res.data.totalPages;
-    //             } catch (error) {
-    //                 console.log(error);
-    //             }
-    //         };
-    //
-    //         onMounted(() => getAccountAll(pagination.value.currentPage));
-    //
-    //         return {
-    //             accounts,
-    //             pagination,
-    //             pages,
-    //             onPageChange
-    //         };
-    //     }
-    // }).mount('#app');
+    createApp({
+        data() {
+            return {
+                accounts: [],
+                pagination: {
+                    currentPage: 1,
+                    pageSize: 10,
+                    totalPages: 0,
+                    totalElements: 0
+                }
+            }
+        },
+        computed: {
+            startPage() {
+                return parseInt((this.pagination.currentPage - 1) / 10) * 10 + 1;
+            },
+            endPage() {
+                let lastPage = parseInt((this.pagination.currentPage - 1) / 10) * 10 + 10;
+                return lastPage <= this.pagination.totalPages ? lastPage : this.pagination.totalPages;
+            },
+            pages() {
+                const list = [];
+                for (let index = this.startPage; index <= this.endPage; index++) {
+                    list.push(index);
+                }
+                return list;
+            }
+        },
+        methods: {
+            async getAccountAll(pageNum) {
+                try {
+                    const res = await axios.get("/api/admin/account", {
+                        params: {
+                            page: pageNum - 1,
+                            size: this.pagination.pageSize
+                        }
+                    });
+                    this.accounts = res.data.content;
+                    this.pagination.totalElements = res.data.totalElements;
+                    this.pagination.totalPages = res.data.totalPages;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            onPageChange(val) {
+                if (val < 1) {
+                    alert('첫 페이지입니다.');
+                    return;
+                }
+                if (val > this.pagination.totalPages) {
+                    alert('마지막 페이지입니다.');
+                    return;
+                }
+                this.pagination.currentPage = val;
+                this.getAccountAll(val);
+            }
+        },
+        mounted() {
+            this.getAccountAll(this.pagination.currentPage);
+        }
+    }).mount('#app');
 </script>
 
 </body>

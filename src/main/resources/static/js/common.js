@@ -29,16 +29,6 @@ $(document).ready(function() {
         }
     }
 
-    // function toggleMobileSideBar() {
-    //     showLeftNav = !showLeftNav;
-    //     if (showLeftNav) {
-    //         // $("#divProfile").fadeIn(200);
-    //         $("#divMobileSidebar").show(200);
-    //     } else {
-    //         $("#divMobileSidebar").hide(200);
-    //     }
-    // }
-
     function handleOutsideClick(event) {
         if (showProfile && !$(event.target).closest('.profile').length) {
             showProfile = false;

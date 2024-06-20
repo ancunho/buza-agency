@@ -39,7 +39,7 @@ public class AccountController {
     }
 
     @GetMapping("/account")
-    public Page<AccountDto> account_list(@PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public Page<AccountDto> account_list(@PageableDefault(sort = "accountSeq", direction = Sort.Direction.DESC) Pageable pageable) {
         return accountService.getAccountAll(pageable);
     }
 
