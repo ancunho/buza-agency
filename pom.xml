@@ -80,6 +80,7 @@
         </dependency>
 
         <!-- mybatis -->
+        <!-- 주의: Springboot 3.X버전에서는 mybatis-spring-boot-starter버전을 3.0.3으로 해야한다. 이것때문에 삽질 두시간했네..  -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
