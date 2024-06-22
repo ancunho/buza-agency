@@ -7,6 +7,7 @@ import io.buza.agency.dto.response.ResponseCode;
 import io.buza.agency.serivce.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -21,7 +22,8 @@ import java.util.List;
 @Slf4j
 public class AccountController {
 
-    private final AccountService accountService;
+    @Autowired
+    private AccountService accountService;
 
 //    public BaseResponse<List<AccountResponseDto>> account_list(@PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
 //
@@ -40,6 +42,8 @@ public class AccountController {
 
     @GetMapping("/account")
     public Page<AccountDto> account_list(@PageableDefault(sort = "accountSeq", direction = Sort.Direction.DESC) Pageable pageable) {
+        List<AccountDto> resultList = accountService.getAllAccount();
+        System.out.println(resultList.size());
         return accountService.getAccountAll(pageable);
     }
 
