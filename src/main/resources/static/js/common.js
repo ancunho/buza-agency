@@ -58,6 +58,22 @@ $(document).ready(function() {
         $("#divMobileSidebar").show(200);
     });
 
+    var currentUrl = window.location.pathname;
+
+    // 모든 메뉴 항목에 대해 반복
+    $('#leftNav a').each(function() {
+        var $this = $(this);
+        $this.removeClass("bg-gray-100");
+        $this.closest('ul').siblings('button').removeClass('bg-gray-100');
+
+        // 현재 URL과 일치하는 경우
+        if ($this.attr('href') === currentUrl) {
+            $this.addClass('bg-gray-100'); // 서브메뉴에 active 클래스 추가
+            $this.closest('li').addClass('bg-gray-100'); // 서브메뉴의 부모 li에 active 클래스 추가
+            $this.closest('ul').siblings('button').addClass('bg-gray-100'); // 부모 li의 button에 active 클래스 추가
+        }
+    });
+
 });
 
 $(window).on('load', function(){
