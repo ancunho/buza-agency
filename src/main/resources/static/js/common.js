@@ -1,3 +1,8 @@
+// $(function(){
+//     $("#divLoading").show();
+// });
+
+
 const contextRootPath = "";
 const { createApp } = Vue;
 
@@ -16,6 +21,7 @@ function BuzaRouter(url) {
 
 
 $(document).ready(function() {
+    $("#divLoading").show();
     var showLeftNav = false;
     var showProfile = false;
 
@@ -52,5 +58,9 @@ $(document).ready(function() {
         $("#divMobileSidebar").show(200);
     });
 
+});
+
+$(window).on('load', function(){
+    $("#divLoading").css('display','none');
 });
 

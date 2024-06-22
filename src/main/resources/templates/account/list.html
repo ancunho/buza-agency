@@ -179,6 +179,7 @@
                 pagination: {
                     currentPage: 1,
                     pageSize: 10,
+                    onePageLength: 10,
                     totalPages: 0,
                     totalElements: 0
                 }
@@ -186,10 +187,10 @@
         },
         computed: {
             startPage() {
-                return parseInt((this.pagination.currentPage - 1) / 10) * 10 + 1;
+                return parseInt((this.pagination.currentPage - 1) / this.pagination.onePageLength) * this.pagination.onePageLength + 1;
             },
             endPage() {
-                let lastPage = parseInt((this.pagination.currentPage - 1) / 10) * 10 + 10;
+                let lastPage = parseInt((this.pagination.currentPage - 1) / this.pagination.onePageLength) * this.pagination.onePageLength + this.pagination.onePageLength;
                 return lastPage <= this.pagination.totalPages ? lastPage : this.pagination.totalPages;
             },
             pages() {
