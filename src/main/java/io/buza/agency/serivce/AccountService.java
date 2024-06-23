@@ -1,6 +1,8 @@
 package io.buza.agency.serivce;
 
+import com.github.pagehelper.PageHelper;
 import io.buza.agency.dto.AccountDto;
+import io.buza.agency.dto.request.BaseRequest;
 import io.buza.agency.dto.response.AccountResponseDto;
 import io.buza.agency.entity.Account;
 import io.buza.agency.mapper.AccountMapper;
@@ -11,10 +13,13 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 
@@ -41,8 +46,21 @@ public class AccountService {
         return accountRepository.findAll(pageable).map(AccountDto::fromEntitytoDto);
     }
 
-    public List<AccountDto> getAllAccount() {
-        return accountMapper.getAllAccount();
+    public List<AccountDto> getAllAccount(BaseRequest baseRequest) {
+        PageHelper.startPage(1,5);
+        return accountMapper.selectAccountAll(baseRequest);
+    }
+
+    public Page<AccountDto> list(Pageable pageable) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("offset", pageable.getOffset());
+        paramMap.put("pageSize", pageable.getPageSize());
+
+        List<AccountDto> resultList = accountMapper.selectAccountAllM(paramMap);
+        Long resultCount = accountRepository.count();
+        return new PageImpl<>(resultList, pageable, resultCount);
+
+
     }
 
 

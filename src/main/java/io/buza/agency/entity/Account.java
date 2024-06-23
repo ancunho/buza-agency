@@ -1,6 +1,5 @@
 package io.buza.agency.entity;
 
-import io.buza.agency.dto.AccountDto;
 import jakarta.persistence.*;
 import lombok.*;
 

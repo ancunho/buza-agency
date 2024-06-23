@@ -206,10 +206,11 @@
                 try {
                     const res = await axios.get("/api/admin/account", {
                         params: {
-                            page: pageNum - 1,
-                            size: this.pagination.pageSize
+                            pageNum: pageNum - 1,
+                            pageSize: this.pagination.pageSize
                         }
                     });
+                    console.log(res);
                     this.accounts = res.data.content;
                     this.pagination.totalElements = res.data.totalElements;
                     this.pagination.totalPages = res.data.totalPages;

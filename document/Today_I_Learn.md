@@ -32,3 +32,5 @@
 
 #### DATETIME의 기본사이즈는 5 --> 즉 2021-05-30 23:53:46.00000 -> 소수점뒤에 0이 다섯개라는 뜻임.    6이면 여섯개. 
 
+#### JPA가 부러운 Mybatis 
+https://medium.com/cj-onstyle/jpa%EA%B0%80-%EB%B6%80%EB%9F%AC%EC%9A%B4-mybatis-e0cfb2f216fb

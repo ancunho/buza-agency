@@ -1,5 +1,6 @@
 package io.buza.agency.dto;
 
+import io.buza.agency.dto.request.BaseRequest;
 import io.buza.agency.entity.Account;
 import jakarta.persistence.Column;
 import lombok.*;
@@ -12,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 @Setter
 @ToString
 @NoArgsConstructor
-public class AccountDto {
+public class AccountDto extends BaseRequest {
 
     private Long accountSeq;
     private String accountUsername;
@@ -31,6 +32,7 @@ public class AccountDto {
     private String createdBy;
     private LocalDateTime modifiedAt;
     private String modifiedBy;
+
 
 
     public static Account toEntity(AccountDto accountDto) {
