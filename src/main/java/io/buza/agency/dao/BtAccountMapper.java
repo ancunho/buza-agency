@@ -1,8 +1,11 @@
 package io.buza.agency.dao;
 
+import io.buza.agency.dto.AccountDto;
 import io.buza.agency.entity.BtAccount;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 public interface BtAccountMapper {
     int deleteByPrimaryKey(Long seq);
@@ -22,5 +25,7 @@ public interface BtAccountMapper {
 
     @Select("SELECT EXISTS(SELECT 1 FROM BT_ACCOUNT WHERE EMAIL = #{email})")
     boolean isExistsByEmail(@Param("email") String email);
+
+    List<AccountDto> selectAccountAll();
 
 }

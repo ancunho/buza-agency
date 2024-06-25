@@ -1,6 +1,9 @@
 package io.buza.agency.controller.admin;
 
+import com.github.pagehelper.PageHelper;
+import io.buza.agency.dto.AccountDto;
 import io.buza.agency.dto.request.BaseRequest;
+import io.buza.agency.dto.response.BaseResponse;
 import io.buza.agency.serivce.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,17 +21,9 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping("/account")
-    public void account_main(BaseRequest baseRequest) {
-        boolean resultBoolean = accountService.isExistsByUsername("asdfasdf");
-        boolean resultBoolean2 = accountService.isExistsByUsername("111");
-        log.info(">>>>>>>>>>>>>>>>{}", resultBoolean);
-        log.info(">>>>>>>>>>>>>>>>{}", resultBoolean2);
-    }
-
     /**
      * Create new account
-     * @param accountDto
+     * @param baseRequest
      * @return BaseResponse -> new AccountDto();
      */
 //    @PostMapping("/account")
@@ -42,12 +37,12 @@ public class AccountController {
 //        return BaseResponse.valueOfSuccess(accountResponseDto);
 //    }
 //
-//    @GetMapping("/account")
-//    public ResponseEntity<Object> account_list(BaseRequest baseRequest, @PageableDefault(value = 10) Pageable page) {
-//        PageHelper.startPage(1, 5);
-//        List<AccountDto> resultList1 = accountService.getAllAccount(baseRequest);
-//        Page<AccountDto> resultList = accountService.list(page);
-//        return ResponseEntity.ok().body(resultList);
-//    }
+    @GetMapping("/account")
+    public BaseResponse<AccountDto> account_list(BaseRequest baseRequest) throws Exception {
+//        PageHelper.startPage(baseRequest.getPageNum(), baseRequest.getPageSize());
+        PageHelper.startPage(baseRequest.getPageNum(), baseRequest.getPageSize());
+        List<AccountDto> resultList = accountService.selectAccountAll();
+        return BaseResponse.valueOfSuccessListWithPagination(resultList);
+    }
 
  }

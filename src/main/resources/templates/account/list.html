@@ -206,7 +206,7 @@
                 try {
                     const res = await axios.get("/api/admin/account", {
                         params: {
-                            pageNum: pageNum - 1,
+                            pageNum: pageNum,
                             pageSize: this.pagination.pageSize
                         }
                     });

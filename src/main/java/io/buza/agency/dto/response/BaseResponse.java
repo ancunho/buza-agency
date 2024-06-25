@@ -20,9 +20,17 @@ public class BaseResponse<T> implements Serializable {
     @Getter private List<T> list;
     @Getter private T data;
     @Getter private String msg;
+    @Getter private PageInfo<T> pageInfo;
 
     private BaseResponse(String msg) {
         this.msg = msg;
+    }
+
+    private BaseResponse(int status, int code, String msg, PageInfo<T> pageInfo) {
+        this.status = status;
+        this.code = code;
+        this.msg = msg;
+        this.pageInfo = pageInfo;
     }
 
     private BaseResponse(int status, int code, String msg, List<T> list) {
@@ -63,6 +71,12 @@ public class BaseResponse<T> implements Serializable {
 
     public static <T> BaseResponse<T> valueOfSuccessMessage(String msg) {
         return new BaseResponse<>(ResponseCode.SUCCESS.getCode(), ResponseCode.CODE.getCode(), msg);
+    }
+
+    public static <T> BaseResponse<T> valueOfSuccessListWithPagination(List<T> list) {
+        PageInfo<T> pageInfo = new PageInfo<>(list);
+        pageInfo.setList(list);
+        return new BaseResponse<>(ResponseCode.SUCCESS.getCode(), ResponseCode.CODE.getCode(), ResponseCode.SUCCESS.getDesc(), pageInfo);
     }
 
     public static <T> BaseResponse<T> valueOfSuccessList(List<T> list) {

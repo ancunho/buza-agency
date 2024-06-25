@@ -8,8 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
 @Slf4j
 @ToString
 public class BaseRequest implements Serializable {
@@ -18,6 +16,9 @@ public class BaseRequest implements Serializable {
     private int page;
     private int limit;
     private int rows;
+
+    private int pageNum;
+    private int pageSize;
     private String startDate;
     private String endDate;
     private String startTime;
@@ -28,18 +29,19 @@ public class BaseRequest implements Serializable {
     private String referer;
     private String statusName;
 
-    public int getPage() {
-        if (this.page == 0) {
+    public int getPageNum() {
+        if (this.pageNum == 0) {
             return 1;
         }
-        return page;
+        return pageNum;
     }
 
-    public int getLimit() {
-        if (this.limit == 0) {
+
+    public int getPageSize() {
+        if (this.pageSize == 0) {
             return 15;
         }
-        return limit;
+        return pageSize;
     }
 
     public int getRows() {
@@ -49,6 +51,57 @@ public class BaseRequest implements Serializable {
         return rows;
     }
 
+    public Long getRowNum() {
+        return rowNum;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public String getIpAddr() {
+        return ipAddr;
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public String getReferer() {
+        return referer;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setRowNum(Long rowNum) {
+        this.rowNum = rowNum;
+    }
 
     public void setPage(int page) {
         this.page = page;
@@ -61,70 +114,48 @@ public class BaseRequest implements Serializable {
     public void setRows(int rows) {
         this.rows = rows;
     }
-    public String getStartDate() {
-        return startDate;
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
-        return endDate;
-    }
-
     public void setEndDate(String endDate) {
         this.endDate = endDate;
-    }
-
-    public String getStartTime() {
-        return startTime;
     }
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
-        return endTime;
-    }
-
     public void setEndTime(String endTime) {
         this.endTime = endTime;
-    }
-
-    public String getSessionId() {
-        return sessionId;
     }
 
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
 
-    public String getIpAddr() {
-        return ipAddr;
-    }
-
     public void setIpAddr(String ipAddr) {
         this.ipAddr = ipAddr;
-    }
-
-    public String getUserAgent() {
-        return userAgent;
     }
 
     public void setUserAgent(String userAgent) {
         this.userAgent = userAgent;
     }
 
-    public String getReferer() {
-        return referer;
-    }
-
     public void setReferer(String referer) {
         this.referer = referer;
     }
 
-
-
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
 }
