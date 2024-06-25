@@ -1,92 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="io.buza.agency.mapper.AccountMapper">
-    <select id="selectAccountAll" parameterType="io.buza.agency.dto.request.BaseRequest" resultType="io.buza.agency.dto.AccountDto">
-        SELECT 	T1.ROW_NUM,
-                T1.ACCOUNT_SEQ,
-                T1.ACCOUNT_USERNAME,
-                T1.ACCOUNT_PASSWORD,
-                T1.ACCOUNT_ROLE,
-                T1.STATUS,
-                T1.REAL_NAME,
-                T1.BIRTHDAY,
-                T1.GENDER,
-                T1.ACCOUNT_TYPE,
-                T1.ACCOUNT_LEVEL,
-                T1.NICKNAME,
-                T1.AVATAR,
-                T1.COUNTRY,
-                T1.CREATED_AT,
-                T1.CREATED_BY,
-                T1.MODIFIED_AT,
-                T1.MODIFIED_BY
-        FROM	(
-                SELECT 	ROW_NUMBER() OVER() AS ROW_NUM,
-                        ACCOUNT_SEQ,
-                        ACCOUNT_USERNAME,
-                        ACCOUNT_PASSWORD,
-                        ACCOUNT_ROLE,
-                        STATUS,
-                        REAL_NAME,
-                        BIRTHDAY,
-                        GENDER,
-                        ACCOUNT_TYPE,
-                        ACCOUNT_LEVEL,
-                        NICKNAME,
-                        AVATAR,
-                        COUNTRY,
-                        CREATED_AT,
-                        CREATED_BY,
-                        MODIFIED_AT,
-                        MODIFIED_BY
-                FROM 	TB_ACCOUNT
-                ) T1
-        ORDER BY T1.ROW_NUM DESC
-    </select>
-
-        <select id="selectAccountAllM" parameterType="java.util.HashMap" resultType="io.buza.agency.dto.AccountDto">
-                SELECT 	T1.ROW_NUM,
-                          T1.ACCOUNT_SEQ,
-                          T1.ACCOUNT_USERNAME,
-                          T1.ACCOUNT_PASSWORD,
-                          T1.ACCOUNT_ROLE,
-                          T1.STATUS,
-                          T1.REAL_NAME,
-                          T1.BIRTHDAY,
-                          T1.GENDER,
-                          T1.ACCOUNT_TYPE,
-                          T1.ACCOUNT_LEVEL,
-                          T1.NICKNAME,
-                          T1.AVATAR,
-                          T1.COUNTRY,
-                          T1.CREATED_AT,
-                          T1.CREATED_BY,
-                          T1.MODIFIED_AT,
-                          T1.MODIFIED_BY
-                FROM	(
-                                SELECT 	ROW_NUMBER() OVER() AS ROW_NUM,
-                                        ACCOUNT_SEQ,
-                                          ACCOUNT_USERNAME,
-                                          ACCOUNT_PASSWORD,
-                                          ACCOUNT_ROLE,
-                                          STATUS,
-                                          REAL_NAME,
-                                          BIRTHDAY,
-                                          GENDER,
-                                          ACCOUNT_TYPE,
-                                          ACCOUNT_LEVEL,
-                                          NICKNAME,
-                                          AVATAR,
-                                          COUNTRY,
-                                          CREATED_AT,
-                                          CREATED_BY,
-                                          MODIFIED_AT,
-                                          MODIFIED_BY
-                                FROM 	TB_ACCOUNT
-                        ) T1
-                ORDER BY T1.ROW_NUM DESC
-        </select>
-
+<mapper namespace="io.buza.agency.dao.BtAccountMapper">
+<!--    <select id="selectAccountAll" parameterType="io.buza.agency.dto.request.BaseRequest" resultType="io.buza.agency.dto.AccountDto">-->
+<!--        SELECT 	T1.ROW_NUM,-->
+<!--                T1.ACCOUNT_SEQ,-->
+<!--                T1.ACCOUNT_USERNAME,-->
+<!--                T1.ACCOUNT_PASSWORD,-->
+<!--                T1.ACCOUNT_ROLE,-->
+<!--                T1.STATUS,-->
+<!--                T1.REAL_NAME,-->
+<!--                T1.BIRTHDAY,-->
+<!--                T1.GENDER,-->
+<!--                T1.ACCOUNT_TYPE,-->
+<!--                T1.ACCOUNT_LEVEL,-->
+<!--                T1.NICKNAME,-->
+<!--                T1.AVATAR,-->
+<!--                T1.COUNTRY,-->
+<!--                T1.CREATED_AT,-->
+<!--                T1.CREATED_BY,-->
+<!--                T1.MODIFIED_AT,-->
+<!--                T1.MODIFIED_BY-->
+<!--        FROM	(-->
+<!--                SELECT 	ROW_NUMBER() OVER() AS ROW_NUM,-->
+<!--                        ACCOUNT_SEQ,-->
+<!--                        ACCOUNT_USERNAME,-->
+<!--                        ACCOUNT_PASSWORD,-->
+<!--                        ACCOUNT_ROLE,-->
+<!--                        STATUS,-->
+<!--                        REAL_NAME,-->
+<!--                        BIRTHDAY,-->
+<!--                        GENDER,-->
+<!--                        ACCOUNT_TYPE,-->
+<!--                        ACCOUNT_LEVEL,-->
+<!--                        NICKNAME,-->
+<!--                        AVATAR,-->
+<!--                        COUNTRY,-->
+<!--                        CREATED_AT,-->
+<!--                        CREATED_BY,-->
+<!--                        MODIFIED_AT,-->
+<!--                        MODIFIED_BY-->
+<!--                FROM 	TB_ACCOUNT-->
+<!--                ) T1-->
+<!--        ORDER BY T1.ROW_NUM DESC-->
+<!--    </select>-->
 
 </mapper>
