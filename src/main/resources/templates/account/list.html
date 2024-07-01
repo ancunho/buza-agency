@@ -35,6 +35,21 @@
                                             <th scope="col"
                                                 class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
                                                 <a href="#" class="group inline-flex">
+                                                    No.
+                                                    <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                                    <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+                                                             aria-hidden="true">
+                                                          <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </th>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                                                <a href="#" class="group inline-flex">
                                                     Name
                                                     <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
                                                     <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
@@ -99,7 +114,8 @@
                                     <tbody class="divide-y divide-gray-200 bg-white">
 
                                         <tr v-for="(account, idx) in accounts" :key="idx">
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.accountUsername }}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.rowNum }}</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.username }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ account.createdAt }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                 <label :class="['badge', account.status === '0' ? 'badge-success' : 'badge-danger']">
@@ -178,7 +194,7 @@
                 accounts: [],
                 pagination: {
                     currentPage: 1,
-                    pageSize: 10,
+                    pageSize: 15,
                     onePageLength: 10,
                     totalPages: 0,
                     totalElements: 0
@@ -211,9 +227,9 @@
                         }
                     });
                     console.log(res);
-                    this.accounts = res.data.content;
-                    this.pagination.totalElements = res.data.totalElements;
-                    this.pagination.totalPages = res.data.totalPages;
+                    this.accounts = res.data.pageInfo.list;
+                    this.pagination.totalElements = res.data.pageInfo.total;
+                    this.pagination.totalPages = res.data.pageInfo.pages;
                 } catch (error) {
                     console.log(error);
                 }
