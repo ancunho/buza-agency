@@ -80,3 +80,12 @@ $(window).on('load', function(){
     $("#divLoading").css('display','none');
 });
 
+function $swalWarnPopup(message) {
+    Swal.fire({
+        icon: "warning",
+        text: message,
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+
