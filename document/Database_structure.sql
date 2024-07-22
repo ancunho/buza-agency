@@ -57,7 +57,7 @@ CREATE TABLE `bt_account` (
 
 
 # 포스트 테이블
-CREATE TABLE `bt_post` (
+CREATE TABLE IF NOT EXISTS `bt_post` (
                            `post_seq` bigint NOT NULL AUTO_INCREMENT,
                            `post_uuid` varchar(45) DEFAULT NULL,
                            `post_type` varchar(10) NOT NULL,
@@ -82,3 +82,85 @@ CREATE TABLE `bt_post` (
                            `modified_by` varchar(50) DEFAULT NULL,
                            PRIMARY KEY (`post_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Post - 블로그 포스트 테이블';
+
+# 태그 테이블
+CREATE TABLE IF NOT EXISTS `bt_tag` (
+                           `tag_seq` INT NOT NULL AUTO_INCREMENT,
+                           `tag_type` VARCHAR(10) NULL,
+                           `tag_name` VARCHAR(45) NULL,
+                           `status` VARCHAR(1) NULL,
+                           `created_at` DATETIME NULL,
+                           `created_by` VARCHAR(45) NULL,
+                           `modified_at` DATETIME NULL,
+                           `modified_by` VARCHAR(45) NULL,
+                           PRIMARY KEY (`tag_seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='태그테이블';
+
+# 포스트 - 태그 관계 테이블
+CREATE TABLE IF NOT EXISTS `bt_post_tag` (
+                            `seq` INT NOT NULL AUTO_INCREMENT,
+                            `post_seq` INT NOT NULL,
+                            `tag_seq` INT NOT NULL,
+                            PRIMARY KEY (`seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='포스트 - 태그 관계 테이블';
+
+# 포스트 작성자 테이블
+CREATE TABLE IF NOT EXISTS `bt_writer_post` (
+                           `seq` INT NOT NULL AUTO_INCREMENT,
+                           `is_admin_write` VARCHAR(1) NULL,
+                           `admin_account_seq` INT NULL,
+                           `account_seq` INT NULL,
+                           PRIMARY KEY (`seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='포스트 작성자 테이블';
+
+# 관리자계정 - 역할관계 테이블
+CREATE TABLE IF NOT EXISTS `bt_admin_account_role` (
+                          `seq` INT NOT NULL AUTO_INCREMENT,
+                          `admin_account_seq` INT NULL,
+                          `created_at` DATETIME NULL,
+                          `created_by` VARCHAR(45) NULL,
+                          `modified_at` DATETIME NULL,
+                          `modified_by` VARCHAR(45) NULL,
+                          PRIMARY KEY (`seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='관리자 계정 - 역할 관계 테이블 ';
+
+# 역할 테이블
+CREATE TABLE IF NOT EXISTS `bt_role` (
+                            `role_seq` INT NOT NULL AUTO_INCREMENT,
+                            `role_name` VARCHAR(45) NULL,
+                            `role_code` VARCHAR(45) NULL,
+                            `created_at` DATETIME NULL,
+                            `created_by` VARCHAR(45) NULL,
+                            `modified_at` DATETIME NULL,
+                            `modified_by` VARCHAR(45) NULL,
+                            PRIMARY KEY (`role_seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='역할 테이블';
+
+
+# 메뉴 테이블
+CREATE TABLE IF NOT EXISTS `bt_menu` (
+                            `menu_seq` INT NOT NULL AUTO_INCREMENT,
+                            `menu_code` VARCHAR(45) NULL,
+                            `menu_name` VARCHAR(45) NULL,
+                            `menu_position` VARCHAR(45) NULL,
+                            `menu_icon` VARCHAR(45) NULL,
+                            `menu_type` VARCHAR(10) NULL,
+                            `menu_status` VARCHAR(1) NULL,
+                            `created_at` DATETIME NULL,
+                            `created_by` VARCHAR(45) NULL,
+                            `modified_at` DATETIME NULL,
+                            `modified_by` VARCHAR(45) NULL,
+                            PRIMARY KEY (`menu_seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='메뉴 테이블';
+
+# 역할 - 메뉴 관계 테이블
+CREATE TABLE IF NOT EXISTS `bt_role_menu` (
+                             `seq` INT NOT NULL,
+                             `role_seq` INT NOT NULL,
+                             `menu_seq` INT NOT NULL,
+                             `created_at` DATETIME NULL,
+                             `created_by` VARCHAR(45) NULL,
+                             `modified_at` DATETIME NULL,
+                             `modified_by` VARCHAR(45) NULL,
+                             PRIMARY KEY (`seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='역할 - 메뉴 관계 테이블';
