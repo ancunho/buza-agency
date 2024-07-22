@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.buza.agency.repository.BtRoleMenuMapper">
+  <resultMap id="BaseResultMap" type="io.buza.agency.entity.BtRoleMenu">
+    <id column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="role_seq" jdbcType="INTEGER" property="roleSeq" />
+    <result column="menu_seq" jdbcType="INTEGER" property="menuSeq" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" />
+    <result column="modified_by" jdbcType="VARCHAR" property="modifiedBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seq, role_seq, menu_seq, created_at, created_by, modified_at, modified_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bt_role_menu
+    where seq = #{seq,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bt_role_menu
+    where seq = #{seq,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="io.buza.agency.entity.BtRoleMenu">
+    insert into bt_role_menu (seq, role_seq, menu_seq, 
+      created_at, created_by, modified_at, 
+      modified_by)
+    values (#{seq,jdbcType=INTEGER}, #{roleSeq,jdbcType=INTEGER}, #{menuSeq,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{modifiedAt,jdbcType=TIMESTAMP}, 
+      #{modifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.buza.agency.entity.BtRoleMenu">
+    insert into bt_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="roleSeq != null">
+        role_seq,
+      </if>
+      <if test="menuSeq != null">
+        menu_seq,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="modifiedAt != null">
+        modified_at,
+      </if>
+      <if test="modifiedBy != null">
+        modified_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="roleSeq != null">
+        #{roleSeq,jdbcType=INTEGER},
+      </if>
+      <if test="menuSeq != null">
+        #{menuSeq,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedAt != null">
+        #{modifiedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null">
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.buza.agency.entity.BtRoleMenu">
+    update bt_role_menu
+    <set>
+      <if test="roleSeq != null">
+        role_seq = #{roleSeq,jdbcType=INTEGER},
+      </if>
+      <if test="menuSeq != null">
+        menu_seq = #{menuSeq,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedAt != null">
+        modified_at = #{modifiedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null">
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seq = #{seq,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.buza.agency.entity.BtRoleMenu">
+    update bt_role_menu
+    set role_seq = #{roleSeq,jdbcType=INTEGER},
+      menu_seq = #{menuSeq,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      modified_at = #{modifiedAt,jdbcType=TIMESTAMP},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.buza.agency.repository.BtMenuMapper">
+  <resultMap id="BaseResultMap" type="io.buza.agency.entity.BtMenu">
+    <id column="menu_seq" jdbcType="INTEGER" property="menuSeq" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_position" jdbcType="VARCHAR" property="menuPosition" />
+    <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon" />
+    <result column="menu_type" jdbcType="VARCHAR" property="menuType" />
+    <result column="menu_status" jdbcType="VARCHAR" property="menuStatus" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" />
+    <result column="modified_by" jdbcType="VARCHAR" property="modifiedBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    menu_seq, menu_code, menu_name, menu_position, menu_icon, menu_type, menu_status, 
+    created_at, created_by, modified_at, modified_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bt_menu
+    where menu_seq = #{menuSeq,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bt_menu
+    where menu_seq = #{menuSeq,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="io.buza.agency.entity.BtMenu">
+    insert into bt_menu (menu_seq, menu_code, menu_name, 
+      menu_position, menu_icon, menu_type, 
+      menu_status, created_at, created_by, 
+      modified_at, modified_by)
+    values (#{menuSeq,jdbcType=INTEGER}, #{menuCode,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{menuPosition,jdbcType=VARCHAR}, #{menuIcon,jdbcType=VARCHAR}, #{menuType,jdbcType=VARCHAR}, 
+      #{menuStatus,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{modifiedAt,jdbcType=TIMESTAMP}, #{modifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.buza.agency.entity.BtMenu">
+    insert into bt_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuSeq != null">
+        menu_seq,
+      </if>
+      <if test="menuCode != null">
+        menu_code,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="menuPosition != null">
+        menu_position,
+      </if>
+      <if test="menuIcon != null">
+        menu_icon,
+      </if>
+      <if test="menuType != null">
+        menu_type,
+      </if>
+      <if test="menuStatus != null">
+        menu_status,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="modifiedAt != null">
+        modified_at,
+      </if>
+      <if test="modifiedBy != null">
+        modified_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuSeq != null">
+        #{menuSeq,jdbcType=INTEGER},
+      </if>
+      <if test="menuCode != null">
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPosition != null">
+        #{menuPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="menuIcon != null">
+        #{menuIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuStatus != null">
+        #{menuStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedAt != null">
+        #{modifiedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null">
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.buza.agency.entity.BtMenu">
+    update bt_menu
+    <set>
+      <if test="menuCode != null">
+        menu_code = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPosition != null">
+        menu_position = #{menuPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="menuIcon != null">
+        menu_icon = #{menuIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        menu_type = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuStatus != null">
+        menu_status = #{menuStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedAt != null">
+        modified_at = #{modifiedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null">
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_seq = #{menuSeq,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.buza.agency.entity.BtMenu">
+    update bt_menu
+    set menu_code = #{menuCode,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_position = #{menuPosition,jdbcType=VARCHAR},
+      menu_icon = #{menuIcon,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=VARCHAR},
+      menu_status = #{menuStatus,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      modified_at = #{modifiedAt,jdbcType=TIMESTAMP},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR}
+    where menu_seq = #{menuSeq,jdbcType=INTEGER}
+  </update>
+</mapper>
