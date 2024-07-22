@@ -1,6 +1,6 @@
 package io.buza.agency.serivce.impl;
 
-import io.buza.agency.dao.BtAccountMapper;
+import io.buza.agency.repository.BtAccountRepository;
 import io.buza.agency.dto.AccountDto;
 import io.buza.agency.serivce.AccountService;
 import lombok.AllArgsConstructor;
@@ -20,15 +20,15 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
-    private BtAccountMapper accountMapper;
+    private BtAccountRepository accountRepository;
 
     @Override
     public boolean isExistsByUsername(String accountUsername) {
-        return accountMapper.isExistsByUsername(accountUsername);
+        return accountRepository.isExistsByUsername(accountUsername);
     }
 
     @Override
     public List<AccountDto> selectAccountAll() {
-        return accountMapper.selectAccountAll();
+        return accountRepository.selectAccountAll();
     }
 }

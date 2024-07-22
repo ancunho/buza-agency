@@ -9,7 +9,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("io.buza.agency.dao")
+@MapperScan("io.buza.agency.repository")
 public class AgencyApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AgencyApplication.class);

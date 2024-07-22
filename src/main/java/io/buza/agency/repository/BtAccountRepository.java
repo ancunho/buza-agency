@@ -1,4 +1,4 @@
-package io.buza.agency.dao;
+package io.buza.agency.repository;
 
 import io.buza.agency.dto.AccountDto;
 import io.buza.agency.entity.BtAccount;
@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
-public interface BtAccountMapper {
+public interface BtAccountRepository {
     int deleteByPrimaryKey(Long seq);
 
     int insert(BtAccount record);

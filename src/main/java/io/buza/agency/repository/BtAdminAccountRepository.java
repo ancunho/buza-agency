@@ -1,8 +1,8 @@
-package io.buza.agency.dao;
+package io.buza.agency.repository;
 
 import io.buza.agency.entity.BtAdminAccount;
 
-public interface BtAdminAccountMapper {
+public interface BtAdminAccountRepository {
     int deleteByPrimaryKey(Long seq);
 
     int insert(BtAdminAccount record);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.buza.agency.dao.BtPostMapper">
+<mapper namespace="io.buza.agency.repository.BtPostRepository">
     <resultMap id="BaseResultMap" type="io.buza.agency.entity.BtPost">
         <id column="post_seq" jdbcType="BIGINT" property="postSeq"/>
         <result column="post_uuid" jdbcType="VARCHAR" property="postUuid"/>

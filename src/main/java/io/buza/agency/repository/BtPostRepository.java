@@ -1,8 +1,8 @@
-package io.buza.agency.dao;
+package io.buza.agency.repository;
 
 import io.buza.agency.entity.BtPost;
 
-public interface BtPostMapper {
+public interface BtPostRepository {
     int deleteByPrimaryKey(Long postSeq);
 
     int insert(BtPost record);
