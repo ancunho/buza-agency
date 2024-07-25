@@ -16,6 +16,6 @@
     </settings>
 
     <typeAliases>
-<!--        <typeAlias alias="TB_ACCESS_HIST"                   type="com.lexus.dcc.model.TB_ACCESS_HIST" />-->
+        <typeAlias alias="AdminAccountDto"                   type="io.buza.agency.dto.AdminAccountDto" />
     </typeAliases>
 </configuration>

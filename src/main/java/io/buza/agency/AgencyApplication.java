@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @ServletComponentScan
@@ -14,7 +16,13 @@ public class AgencyApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AgencyApplication.class);
 
+    @Bean
+    public static BCryptPasswordEncoder bCryptPasswordEncoder2() {
+        return new BCryptPasswordEncoder();
+    }
+
     public static void main(String[] args) {
+        System.out.println(">>>>>>" + bCryptPasswordEncoder2().encode("111"));
         SpringApplication.run(AgencyApplication.class, args);
     }
 

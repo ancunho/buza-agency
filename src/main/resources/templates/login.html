@@ -107,6 +107,7 @@
                 _this.doLogin(_this.admin_username, _this.admin_password);
             },
             async doLogin(username, password) {
+                console.log(">>>>>>" + username + ">>>>" + password);
                 try {
                     const res = await axios.post("/api/admin/admin_login_proc.do", {
                         username,password

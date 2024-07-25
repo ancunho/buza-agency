@@ -1,5 +1,6 @@
 package io.buza.agency.dto;
 
+import io.buza.agency.config.RoleEnum;
 import io.buza.agency.dto.request.BaseRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,14 @@ public class AdminAccountDto extends BaseRequest implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    private RoleEnum role;
+
+    public AdminAccountDto(String username, String password, RoleEnum role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
     private Long seq;
     private String username;
     private String password;
@@ -35,6 +44,8 @@ public class AdminAccountDto extends BaseRequest implements Serializable {
     private String createdBy;
     private String modifiedAt;
     private String modifiedBy;
+
+    private Boolean isEnable;
 
 
 

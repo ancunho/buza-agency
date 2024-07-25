@@ -22,4 +22,11 @@ public class AdminAccountController {
         return BaseResponse.valueOfSuccess();
     }
 
+    @PostMapping("/logout.do")
+    public BaseResponse<AdminAccountDto> admin_logout(HttpServletRequest request) {
+        System.out.println(">>>>>" + request.getParameter("username"));
+        System.out.println(">>>>>" + request.getParameter("password"));
+        return BaseResponse.valueOfSuccess();
+    }
+
 }

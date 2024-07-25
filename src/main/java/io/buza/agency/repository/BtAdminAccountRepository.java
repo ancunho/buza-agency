@@ -1,5 +1,6 @@
 package io.buza.agency.repository;
 
+import io.buza.agency.dto.AdminAccountDto;
 import io.buza.agency.entity.BtAdminAccount;
 
 public interface BtAdminAccountRepository {
@@ -14,4 +15,7 @@ public interface BtAdminAccountRepository {
     int updateByPrimaryKeySelective(BtAdminAccount record);
 
     int updateByPrimaryKey(BtAdminAccount record);
+
+    AdminAccountDto findByUsername(String username);
+
 }
