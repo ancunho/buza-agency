@@ -19,9 +19,15 @@ public class AdminAccountDto extends BaseRequest implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private RoleEnum role;
+    private RoleEnum roleEnum;
 
-    public AdminAccountDto(String username, String password, RoleEnum role) {
+    public AdminAccountDto(String username, String password, RoleEnum roleEnum) {
+        this.username = username;
+        this.password = password;
+        this.roleEnum = roleEnum;
+    }
+
+    public AdminAccountDto(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -34,6 +40,7 @@ public class AdminAccountDto extends BaseRequest implements Serializable {
     private String real_name;
     private String role_code;
     private String role_name;
+    private String role;
     private String mobile_no;
     private String email;
     private String thumbnail_url;

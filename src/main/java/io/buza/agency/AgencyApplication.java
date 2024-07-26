@@ -16,13 +16,7 @@ public class AgencyApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AgencyApplication.class);
 
-    @Bean
-    public static BCryptPasswordEncoder bCryptPasswordEncoder2() {
-        return new BCryptPasswordEncoder();
-    }
-
     public static void main(String[] args) {
-        System.out.println(">>>>>>" + bCryptPasswordEncoder2().encode("111"));
         SpringApplication.run(AgencyApplication.class, args);
     }
 
